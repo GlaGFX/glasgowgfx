@@ -1,7 +1,13 @@
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image'; // Currently unused
 import { notFound } from 'next/navigation';
-import type { Metadata, ResolvingMetadata } from 'next';
+// Next.js types
+type Metadata = {
+  title?: string;
+  description?: string;
+};
+
+type ResolvingMetadata = Promise<Metadata>;
 // import { projects } from '@/data/portfolioData'; // Import project data later
 
 // Placeholder data structure (replace with import from data/portfolioData.ts)
@@ -23,10 +29,11 @@ type Params = { slug: string };
 
 // Generate dynamic metadata for SEO
 export async function generateMetadata(
-  { params }: { params: Params },
+  { params }: { params: Promise<Params> | Params },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const slug = params.slug;
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const slug = resolvedParams.slug;
   const project = await getProject(slug);
 
   if (!project) {
@@ -53,37 +60,40 @@ export async function generateStaticParams() {
 }
 
 // The actual page component
-const ProjectDetailPage = async ({ params }: { params: Params }) => {
-  const project = await getProject(params.slug);
+const ProjectDetailPage = async ({ params }: { params: Promise<Params> | Params }) => {
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const project = await getProject(resolvedParams.slug);
 
   // Handle case where project is not found
   if (!project) {
     notFound(); // Triggers the 404 page
   }
+  // Type assertion since notFound() makes this unreachable when undefined
+  const safeProject = project!;
 
   return (
     <div>
-      <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-      <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">{project.description}</p>
+      <h1 className="text-4xl font-bold mb-4">{safeProject.title}</h1>
+      <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">{safeProject.description}</p>
 
       {/* Main Project Image Placeholder */}
       <div className="mb-8 bg-gray-200 dark:bg-gray-700 h-96 flex items-center justify-center">
-        <span className="text-gray-500">Main Image Placeholder ({project.imageUrl})</span>
+        <span className="text-gray-500">Main Image Placeholder ({safeProject.imageUrl})</span>
         {/* <Image src={project.imageUrl} alt={project.title} width={800} height={600} className="w-full h-auto object-contain rounded-lg shadow-md"/> */}
       </div>
 
       <div className="prose dark:prose-invert max-w-none mb-12">
         {/* Render detailed project description (potentially markdown) */}
         <h2 className="text-2xl font-semibold mb-4">Project Details</h2>
-        <p>{project.details}</p>
+        <p>{safeProject.details}</p>
       </div>
 
       {/* Image Gallery Placeholder */}
-      {project.gallery && project.gallery.length > 0 && (
+      {safeProject.gallery && safeProject.gallery.length > 0 && (
         <section>
           <h2 className="text-2xl font-semibold mb-6">Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {project.gallery.map((imgUrl, index) => (
+            {safeProject.gallery.map((imgUrl, index) => (
               <div key={index} className="bg-gray-200 dark:bg-gray-700 h-48 flex items-center justify-center rounded">
                 <span className="text-gray-500 text-sm">Gallery Image Placeholder ({imgUrl})</span>
                 {/* <Image src={imgUrl} alt={`${project.title} gallery image ${index + 1}`} width={400} height={300} className="w-full h-full object-cover rounded shadow"/> */}
