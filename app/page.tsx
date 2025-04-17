@@ -58,14 +58,19 @@ export default function Home() {
               Design Collective
             </motion.span>
 
-            <motion.h1 
-              className="hero-title text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter max-w-4xl mx-auto"
+            <motion.div
+              className="glitch-wrapper"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
             >
-              Crafting digital experiences that inspire and elevate
-            </motion.h1>
+              <h1
+                className="glitch text-6xl md:text-8xl lg:text-9xl font-extrabold leading-none"
+                data-text="GLASGOW GFX"
+              >
+                GLASGOW GFX
+              </h1>
+            </motion.div>
 
             <motion.p 
               className="hero-desc text-lg md:text-xl text-gray max-w-2xl mx-auto leading-relaxed"
