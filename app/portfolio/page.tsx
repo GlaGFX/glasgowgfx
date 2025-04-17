@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next/types';
 // import { projects } from '@/data/portfolioData'; // Import project data later
 
 // Optional: Add metadata specific to the Portfolio page

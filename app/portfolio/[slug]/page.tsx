@@ -1,7 +1,7 @@
 import React from 'react';
 // import Image from 'next/image'; // Currently unused
 // import { notFound } from 'next/navigation'; // Temporarily commented out
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next/types';
 
 
 

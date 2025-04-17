@@ -1,4 +1,4 @@
-import type Metadata from "next";
+import type { Metadata, ResolvingMetadata } from 'next/types';
 import "./globals.css";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
