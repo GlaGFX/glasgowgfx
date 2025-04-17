@@ -29,7 +29,7 @@ type Params = { slug: string };
 
 // Generate dynamic metadata for SEO
 export async function generateMetadata(
-  { params }: { params: Promise<Params> | Params },
+  { params }: { params: Promise<Params> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const resolvedParams = params instanceof Promise ? await params : params;
@@ -60,7 +60,7 @@ export async function generateStaticParams() {
 }
 
 // The actual page component
-const ProjectDetailPage = async ({ params }: { params: Promise<Params> | Params }) => {
+const ProjectDetailPage = async ({ params }: { params: Promise<Params> }) => {
   const resolvedParams = params instanceof Promise ? await params : params;
   const project = await getProject(resolvedParams.slug);
 
