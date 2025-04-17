@@ -22,6 +22,7 @@ async function getProject(slug: string) {
 // Define props type including params
 type Props = {
   params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
 // Generate dynamic metadata for SEO
