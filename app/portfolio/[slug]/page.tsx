@@ -22,7 +22,7 @@ async function getProject(slug: string) {
 // Define props type including params
 type Props = {
   params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams: Record<string, string | string[] | undefined>;
 };
 
 // Generate dynamic metadata for SEO
@@ -57,7 +57,7 @@ export async function generateStaticParams() {
 }
 
 // The actual page component
-const ProjectDetailPage = async ({ params }: { params: { slug: string } }) => {
+const ProjectDetailPage = async ({ params }: Props) => {
   const project = await getProject(params.slug);
 
   // Handle case where project is not found
