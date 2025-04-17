@@ -57,7 +57,7 @@ export async function generateStaticParams() {
 }
 
 // The actual page component
-const ProjectDetailPage = async ({ params }: Props) => {
+const ProjectDetailPage = async ({ params }: { params: { slug: string } }) => {
   const project = await getProject(params.slug);
 
   // Handle case where project is not found
