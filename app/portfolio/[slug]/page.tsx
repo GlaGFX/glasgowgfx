@@ -19,15 +19,14 @@ async function getProject(slug: string) {
   return project;
 }
 
-// Define props type including params
-type Props = {
-  params: { slug: string };
-  searchParams: Record<string, string | string[] | undefined>;
-};
+// Define page props interface
+interface PageProps {
+  params: { slug: string }
+}
 
 // Generate dynamic metadata for SEO
 export async function generateMetadata(
-  { params }: Props,
+  { params }: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
@@ -57,7 +56,7 @@ export async function generateStaticParams() {
 }
 
 // The actual page component
-const ProjectDetailPage = async ({ params }: Props) => {
+const ProjectDetailPage = async ({ params }: PageProps) => {
   const project = await getProject(params.slug);
 
   // Handle case where project is not found
