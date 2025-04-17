@@ -1,31 +1,31 @@
 import React from 'react';
 // import Image from 'next/image'; // Currently unused
 import { notFound } from 'next/navigation';
-// Next.js metadata types
-type Metadata = {
-  title?: string | null;
-  description?: string | null;
-  metadataBase?: URL | null;
-  applicationName?: string | null;
-  authors?: Array<{ name: string; url?: string }> | null;
-  generator?: string | null;
-  keywords?: string[] | null;
-  referrer?: string | null;
-  themeColor?: string | null;
-  colorScheme?: string | null;
-  viewport?: string | null;
-  creator?: string | null;
-  publisher?: string | null;
-  robots?: string | null;
-  alternates?: { canonical?: string | URL } | null;
-  icons?: string | null;
-  openGraph?: any;
-  twitter?: any;
-  verification?: any;
-  other?: Record<string, unknown>;
-};
+import type { Metadata } from 'next/types';
 
-type ResolvingMetadata = Promise<Metadata>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import { projects } from '@/data/portfolioData'; // Import project data later
 
 // Placeholder data structure (replace with import from data/portfolioData.ts)
@@ -48,7 +48,7 @@ type Params = { slug: string };
 // Generate dynamic metadata for SEO
 export async function generateMetadata(
   { params }: { params: Promise<Params> },
-  parent: ResolvingMetadata
+  parent: any
 ): Promise<Metadata> {
   const resolvedParams = params instanceof Promise ? await params : params;
   const slug = resolvedParams.slug;
@@ -57,12 +57,20 @@ export async function generateMetadata(
   if (!project) {
     return {
       title: 'Project Not Found | Glasgow GFX',
+      metadataBase: new URL('https://glasgowgfx.com'),
+      applicationName: 'Glasgow GFX',
+      authors: [{ name: 'Glasgow GFX Team' }],
+      generator: 'Next.js',
     };
   }
 
   return {
     title: `${project.title} | Portfolio | Glasgow GFX`,
     description: project.description,
+    metadataBase: new URL('https://glasgowgfx.com'),
+    applicationName: 'Glasgow GFX',
+    authors: [{ name: 'Glasgow GFX Team' }],
+    generator: 'Next.js',
     // openGraph: { // Optional: Add Open Graph images
     //   images: [project.imageUrl],
     // },
