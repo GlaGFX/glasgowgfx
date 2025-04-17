@@ -1,10 +1,28 @@
 import React from 'react';
 // import Image from 'next/image'; // Currently unused
 import { notFound } from 'next/navigation';
-// Next.js types
+// Next.js metadata types
 type Metadata = {
-  title?: string;
-  description?: string;
+  title?: string | null;
+  description?: string | null;
+  metadataBase?: URL | null;
+  applicationName?: string | null;
+  authors?: Array<{ name: string; url?: string }> | null;
+  generator?: string | null;
+  keywords?: string[] | null;
+  referrer?: string | null;
+  themeColor?: string | null;
+  colorScheme?: string | null;
+  viewport?: string | null;
+  creator?: string | null;
+  publisher?: string | null;
+  robots?: string | null;
+  alternates?: { canonical?: string | URL } | null;
+  icons?: string | null;
+  openGraph?: any;
+  twitter?: any;
+  verification?: any;
+  other?: Record<string, unknown>;
 };
 
 type ResolvingMetadata = Promise<Metadata>;
