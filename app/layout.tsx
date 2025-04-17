@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata } from 'next/types';
 import "./globals.css";
+import { ThemeProvider } from '@/components/ThemeProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import StarfieldBackground from '@/components/layout/StarfieldBackground';
@@ -16,8 +17,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
+        <ThemeProvider>
         {/* Starfield background component */}
         <StarfieldBackground />
         
@@ -32,6 +34,7 @@ export default function RootLayout({
         </PageTransitionWrapper>
         
         {/* Footer */}
+        </ThemeProvider>
         <Footer />
       </body>
     </html>

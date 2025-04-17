@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link'; // Use NextLink for the main logo link to home
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const Header = () => {
   // Function to handle smooth scroll for anchor links within the header
@@ -74,6 +75,7 @@ const Header = () => {
             <button className="btn bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ease-in-out hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30">
               Start a Project
             </button>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button (Placeholder) */}

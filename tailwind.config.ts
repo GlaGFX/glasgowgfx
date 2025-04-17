@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -14,16 +15,16 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
         primary: {
-          DEFAULT: '#6366f1',
-          dark: '#4f46e5',
+          DEFAULT: 'var(--primary)',
+          dark: 'var(--primary-dark)',
         },
-        secondary: '#ec4899',
-        dark: '#111827',
-        light: '#f9fafb',
+        secondary: 'var(--secondary)',
         gray: {
-          DEFAULT: '#6b7280',
-          light: '#e5e7eb',
+          DEFAULT: 'var(--gray)',
+          light: 'var(--gray-light)',
         },
       },
       animation: {

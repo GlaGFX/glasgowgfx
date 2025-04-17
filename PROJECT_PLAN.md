@@ -1,49 +1,62 @@
-# TypeScript Error Resolution Plan
+# Dark/Light Mode Implementation Plan
 
-## Issues Identified
-1. Metadata import errors in portfolio pages
-2. Potential module resolution issues with next/link and next/image
-3. tsconfig.json configuration needs updates
+## Overview
+Implement a theme system that:
+- Respects system color scheme preference
+- Allows manual override via toggle
+- Persists user preference in localStorage
+- Maintains existing design aesthetics
 
-## Solution Steps
+## Implementation Steps
 
-### 1. Update Metadata Imports
-```typescript
-// Change from:
-import { Metadata } from 'next';
-
-// To:
-import type { Metadata, ResolvingMetadata } from 'next/types';
+### 1. Theme Management Architecture
+```mermaid
+graph TD
+    A[ThemeProvider] --> B[Detect System Preference]
+    A --> C[Manage localStorage]
+    A --> D[Provide Theme Context]
+    D --> E[ThemeToggle Component]
+    D --> F[CSS Variables]
 ```
 
-Files to update:
-- app/portfolio/page.tsx
-- app/layout.tsx
-- Any other pages using Metadata
+### 2. File Changes
 
-### 2. Update tsconfig.json
-```json
-{
-  "compilerOptions": {
-    "moduleResolution": "node", // Change from "node16"
-    "strict": true,
-    "strictNullChecks": true,
-    "paths": {
-      "@/*": ["./*"] // Keep existing path configuration
-    }
-  }
-}
-```
+#### New Files:
+- `components/ThemeProvider.tsx` - Context provider for theme management
+- `components/ThemeToggle.tsx` - UI component for theme switching
 
-### 3. Install Type Definitions
-```bash
-npm install --save-dev @types/next
-```
+#### Modified Files:
+- `app/layout.tsx` - Wrap with ThemeProvider
+- `components/layout/Header.tsx` - Add ThemeToggle
+- `app/globals.css` - Update CSS variables
+- `tailwind.config.ts` - Configure dark mode
 
-### 4. Verify Next.js Imports
-- Ensure all next/link and next/image imports are properly used
-- Check for any deprecated usage patterns
+### 3. Technical Details
 
-### 5. Run Type Checking
-```bash
-npm run type-check
+**ThemeProvider.tsx:**
+- Uses React context API
+- Handles system preference detection (prefers-color-scheme)
+- Manages localStorage for user preference
+- Provides theme state to entire app
+
+**ThemeToggle.tsx:**
+- Sun/Moon icons for visual indication
+- Smooth transition animations
+- Accessible ARIA labels
+
+**CSS Variables:**
+- Update `:root` variables in globals.css
+- Define both dark and light color schemes
+- Ensure all components adapt properly
+
+### 4. Testing Plan
+1. Verify system preference detection
+2. Test manual toggle functionality
+3. Check localStorage persistence
+4. Review all components in both themes
+5. Verify no flash of incorrect theme (FOUC)
+
+### 5. Timeline
+1. Initial implementation - 2 hours
+2. Component review/testing - 1 hour
+3. Final adjustments - 1 hour
