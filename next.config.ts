@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     domains: [],
   },
   experimental: {
-    typedRoutes: true,
     serverActions: {
       bodySizeLimit: '2mb'
     }
