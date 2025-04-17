@@ -1,7 +1,7 @@
 import React from 'react';
 // import Image from 'next/image'; // Currently unused
-import { notFound } from 'next/navigation';
-import type { Metadata } from 'next/types';
+// import { notFound } from 'next/navigation'; // Temporarily commented out
+import type { Metadata } from 'next';
 
 
 
@@ -50,8 +50,7 @@ export async function generateMetadata(
   { params }: { params: Promise<Params> },
   parent: any
 ): Promise<Metadata> {
-  const resolvedParams = params instanceof Promise ? await params : params;
-  const slug = resolvedParams.slug;
+  const { slug } = await params;
   const project = await getProject(slug);
 
   if (!project) {
@@ -87,12 +86,13 @@ export async function generateStaticParams() {
 
 // The actual page component
 const ProjectDetailPage = async ({ params }: { params: Promise<Params> }) => {
-  const resolvedParams = params instanceof Promise ? await params : params;
-  const project = await getProject(resolvedParams.slug);
+  const { slug } = await params;
+  const project = await getProject(slug);
 
   // Handle case where project is not found
   if (!project) {
-    notFound(); // Triggers the 404 page
+    // notFound(); // Temporarily commented out
+    return <div>Project not found</div>;
   }
   // Type assertion since notFound() makes this unreachable when undefined
   const safeProject = project!;

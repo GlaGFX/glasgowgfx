@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Metadata } from 'next';
+import type Metadata from 'next';
 
 // Optional: Add metadata specific to the Contact page
 export const metadata: Metadata = {
