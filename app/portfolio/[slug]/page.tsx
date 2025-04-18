@@ -3,13 +3,18 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { FiArrowLeft, FiExternalLink, FiCalendar, FiTag, FiUsers } from 'react-icons/fi';
 import type { Metadata } from 'next';
-import { projects } from '../../../data/projects'; // Import centralized data
-import type { Project } from '@/types'; // Import the Project type
+import { projects } from '../../../data/projects';
+import type { Project } from '@/types';
 
-// Import PageProps from our types - Removed as it's no longer used and conflicts
+// Use simplified PageProps that matches Next.js expectations
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
 
 // Dynamic metadata generation
-export async function generateMetadata({ params }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const project = projects.find(p => p.slug === params.slug);
 
   if (!project) {
@@ -30,15 +35,18 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 // Function to generate static paths if using SSG (optional but good practice)
-export async function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+  return Promise.resolve(
+    projects.map((project) => ({
+      slug: project.slug,
+    }))
+  );
 }
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  // Access the slug directly from params
-  const { slug } = params;
+export default async function ProjectDetailPage({ params }: PageProps) {
+  // Await the params promise
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   const project = projects.find(p => p.slug === slug);
 
   if (!project) {
