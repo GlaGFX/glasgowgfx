@@ -4,12 +4,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from '../ThemeToggle'; // Corrected import path
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiX, FiMenu, FiChevronDown } from 'react-icons/fi';
-import { categories } from '../../data/projects'; // Import categories for dynamic dropdown
+import { FiX, FiMenu } from 'react-icons/fi';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isWorkMenuOpen, setIsWorkMenuOpen] = useState(false);
 
   // Function to handle smooth scroll for anchor links within the header
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -38,8 +36,6 @@ const Header = () => {
 
   // Close mobile menu function
   const closeMobileMenu = () => setIsMenuOpen(false);
-  // Close work dropdown function
-  const closeWorkMenu = () => setIsWorkMenuOpen(false);
 
 
   return (
@@ -65,53 +61,12 @@ const Header = () => {
               Services
             </Link>
 
-            {/* Work/Portfolio dropdown */}
-            <div className="relative group">
-              <button
-                onMouseEnter={() => setIsWorkMenuOpen(true)}
-                onMouseLeave={() => setIsWorkMenuOpen(false)}
-                // Added aria attributes for accessibility
-                aria-haspopup="true"
-                aria-expanded={isWorkMenuOpen}
-                className="flex items-center text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 group-hover:after:w-full"
-              >
-                Work <FiChevronDown className={`ml-1 w-4 h-4 transition-transform ${isWorkMenuOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {/* Work Dropdown Menu */}
-              <AnimatePresence>
-                {isWorkMenuOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}
-                    onMouseEnter={() => setIsWorkMenuOpen(true)}
-                    onMouseLeave={closeWorkMenu}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 py-2 w-48 bg-background/90 border border-white/10 rounded-lg shadow-xl shadow-black/20 backdrop-blur-lg z-20"
-                  >
-                    <Link
-                      href="/portfolio"
-                      onClick={closeWorkMenu}
-                      className="block px-4 py-2 text-sm text-gray-light hover:text-white hover:bg-white/5 transition-colors"
-                    >
-                      All Projects
-                    </Link>
-                    {/* Dynamically generate category links */}
-                    {categories.map((category) => (
-                       <Link
-                        key={category}
-                        href={`/portfolio?category=${encodeURIComponent(category)}`}
-                        onClick={closeWorkMenu}
-                        className="block px-4 py-2 text-sm text-gray-light hover:text-white hover:bg-white/5 transition-colors"
-                      >
-                        {category}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <Link
+              href="/portfolio"
+              className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+            >
+              Work
+            </Link>
 
             <a
               href="/#approach" // Link to section on homepage
