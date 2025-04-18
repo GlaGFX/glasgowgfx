@@ -6,33 +6,33 @@
 @tailwind utilities;
 
 :root {
-  --background: #111827;
-  --foreground: #f9fafb;
+  --background: #0a0f1a;
+  --foreground: #e5e7eb;
   --primary: #6366f1;
   --primary-dark: #4f46e5;
   --secondary: #ec4899;
   --gray: #6b7280;
-  --gray-light: #e5e7eb;
+  --gray-light: #9ca3af;
 }
 
 .dark {
-  --background: #111827;
-  --foreground: #f9fafb;
+  --background: #0a0f1a;
+  --foreground: #e5e7eb;
   --primary: #6366f1;
   --primary-dark: #4f46e5;
   --secondary: #ec4899;
   --gray: #6b7280;
-  --gray-light: #e5e7eb;
+  --gray-light: #d1d5db;
 }
 
 .light {
-  --background: #f9fafb;
-  --foreground: #111827;
+  --background: #e5e7eb;
+  --foreground: #000000;
   --primary: #4f46e5;
   --primary-dark: #4338ca;
   --secondary: #db2777;
-  --gray: #9ca3af;
-  --gray-light: #f3f4f6;
+  --gray: #6b7280;
+  --gray-light: #6b7280;
 }
 
 body {
@@ -200,6 +200,11 @@ html {
 .form-input,
 .form-textarea {
   @apply w-full p-4 rounded-lg bg-white/5 border border-white/10 text-gray-300 placeholder-gray focus:outline-none focus:border-primary focus:bg-white/[.08] transition-all duration-300;
+}
+
+.light .form-input,
+.light .form-textarea {
+  @apply bg-white/90 border-gray-300 text-gray-800 focus:bg-white focus:border-primary-dark;
 }
 
 .form-textarea {
