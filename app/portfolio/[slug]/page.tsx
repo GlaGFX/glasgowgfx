@@ -6,6 +6,9 @@ import type { Metadata } from 'next';
 import { projects } from '../../../data/projects'; // Import centralized data
 import type { Project } from '@/types'; // Import the Project type
 
+// Import PageProps from our types
+import type { PageProps } from '@/types';
+
 // Dynamic metadata generation
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const project = projects.find(p => p.slug === params.slug);
@@ -34,8 +37,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  const project = projects.find(p => p.slug === params.slug);
+export default async function ProjectDetailPage({ params }: PageProps) {
+  // Await the params promise
+  const { slug } = await params;
+  const project = projects.find(p => p.slug === slug);
 
   if (!project) {
     return notFound(); // Trigger 404 page

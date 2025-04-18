@@ -2,6 +2,16 @@
 /// <reference types="next/image-types/global" />
 /// <reference types="next/navigation-types" />
 
+// Type for dynamic route page props
+type PageProps = {
+  params: Promise<{
+    [key: string]: string | string[];
+  }>;
+  searchParams?: Promise<{
+    [key: string]: string | string[] | undefined;
+  }> | undefined;
+};
+
 // Wildcard type declarations for components
 declare module '@/components/layout/*' {
   import { FC, ReactNode } from 'react';
