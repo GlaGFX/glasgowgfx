@@ -37,7 +37,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProjectDetailPage({ params }: PageProps) {
+export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
   // Access the slug directly from params
   const { slug } = params;
   const project = projects.find(p => p.slug === slug);
