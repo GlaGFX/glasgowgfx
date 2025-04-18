@@ -6,7 +6,7 @@ interface ProjectCardProps {
   size?: 'standard' | 'wide' | 'tall' | 'xwide' | 'xtall' | 'large';
 }
 
-export default function ProjectCard({
+export function ProjectCard({
   imageUrl,
   category,
   title,

@@ -2,8 +2,8 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import FeatureCard from '@/components/FeatureCard';
-import ProjectCard from '@/components/ProjectCard';
+import { FeatureCard } from '@/components/FeatureCard';
+import { ProjectCard } from '@/components/ProjectCard';
 
 export default function Home() {
   useEffect(() => {
