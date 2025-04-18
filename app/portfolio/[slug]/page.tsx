@@ -6,15 +6,9 @@ import type { Metadata } from 'next';
 import { projects } from '../../../data/projects';
 import type { Project } from '@/types';
 
-// Use simplified PageProps that matches Next.js expectations
-interface PageProps {
-  params: Promise<{
-    slug: string;
-  }>;
-}
 
 // Dynamic metadata generation
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const project = projects.find(p => p.slug === params.slug);
 
   if (!project) {
@@ -43,10 +37,14 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   );
 }
 
-export default async function ProjectDetailPage({ params }: PageProps) {
-  // Await the params promise
-  const resolvedParams = await params;
-  const { slug } = resolvedParams;
+type PageProps = {
+  params: { slug: string }
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
+
+export default function ProjectDetailPage({ params }: PageProps) {
+  // Access the slug directly from params
+  const { slug } = params;
   const project = projects.find(p => p.slug === slug);
 
   if (!project) {

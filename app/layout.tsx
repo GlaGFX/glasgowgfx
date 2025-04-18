@@ -6,14 +6,15 @@ import Footer from '@/components/layout/Footer';
 import StarfieldBackground from '@/components/layout/StarfieldBackground';
 import PageTransitionWrapper from '@/components/layout/PageTransitionWrapper';
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
   title: "Nexus • Design Collective",
   description: "A collective of designers, developers, and strategists passionate about creating meaningful digital products",
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
 };
 
 export default function RootLayout({
