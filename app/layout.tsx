@@ -9,6 +9,11 @@ import PageTransitionWrapper from '@/components/layout/PageTransitionWrapper';
 export const metadata: Metadata = {
   title: "Nexus • Design Collective",
   description: "A collective of designers, developers, and strategists passionate about creating meaningful digital products",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
 };
 
 export default function RootLayout({
@@ -20,22 +25,22 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
         <ThemeProvider>
-        {/* Starfield background component */}
-        <StarfieldBackground />
-        
-        {/* Header */}
-        <Header />
-        
-        {/* Main content with page transitions */}
-        <PageTransitionWrapper>
-          <main className="relative z-10">
-            {children}
-          </main>
-        </PageTransitionWrapper>
-        
-        {/* Footer */}
+          {/* Starfield background component */}
+          <StarfieldBackground />
+          
+          {/* Header */}
+          <Header />
+          
+          {/* Main content with page transitions */}
+          <PageTransitionWrapper>
+            <main className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              {children}
+            </main>
+          </PageTransitionWrapper>
+          
+          {/* Footer */}
+          <Footer />
         </ThemeProvider>
-        <Footer />
       </body>
     </html>
   );

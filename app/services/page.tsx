@@ -33,10 +33,10 @@ const ServicesPage = () => {
             </li>
           </ul>
           <div className="mt-6">
-            <Link href="/services/design" className="text-primary hover:underline font-medium">Learn more →</Link>
+            <Link href="/services/development" className="text-primary hover:underline font-medium">Learn more →</Link>
           </div>
           <div className="mt-6">
-            <Link href="/services/development" className="text-primary hover:underline font-medium">Learn more →</Link>
+            <Link href="/services/design" className="text-primary hover:underline font-medium">Learn more →</Link>
           </div>
         </ServiceCard>
 

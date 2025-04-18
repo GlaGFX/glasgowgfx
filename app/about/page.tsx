@@ -37,7 +37,7 @@ const AboutPage = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-16 bg-gray-900/50">
+      <section className="py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">Our Core Values</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -1,45 +1,126 @@
-import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import type { Metadata, ResolvingMetadata } from 'next/types';
-// import { projects } from '@/data/portfolioData'; // Import project data later
+import ProjectCard from '@/components/ProjectCard';
 
-// Optional: Add metadata specific to the Portfolio page
-export const metadata: Metadata = {
-  title: 'Portfolio | Glasgow GFX',
-  description: 'Explore the design projects created by Glasgow GFX.',
-};
-
-// Placeholder data structure (replace with import from data/portfolioData.ts)
 const projects = [
-  { id: '1', slug: 'project-1', title: 'Project Alpha', description: 'A stunning web presence.', imageUrl: '/placeholders/project1.jpg' },
-  { id: '2', slug: 'project-2', title: 'Project Beta', description: 'Engaging mobile experience.', imageUrl: '/placeholders/project2.jpg' },
-  { id: '3', slug: 'project-3', title: 'Project Gamma', description: 'Bold branding identity.', imageUrl: '/placeholders/project3.jpg' },
-  { id: '4', slug: 'project-4', title: 'Project Delta', description: 'Innovative UI/UX design.', imageUrl: '/placeholders/project4.jpg' },
+  {
+    id: 1,
+    imageUrl: "/project1.jpg",
+    category: "Branding",
+    title: "Project 1",
+    description: "Sample project description",
+    size: "xwide",
+    slug: "project-1"
+  },
+  {
+    id: 2,
+    imageUrl: "/project2.jpg",
+    category: "Web Design",
+    title: "Project 2",
+    description: "Sample project description",
+    size: "xtall",
+    slug: "project-2"
+  },
+  {
+    id: 3,
+    imageUrl: "/project3.jpg",
+    category: "Illustration",
+    title: "Project 3",
+    description: "Sample project description",
+    size: "square",
+    slug: "project-3"
+  },
+  {
+    id: 4,
+    imageUrl: "/project4.jpg",
+    category: "Animation",
+    title: "Project 4",
+    description: "Sample project description",
+    size: "wide",
+    slug: "project-4"
+  },
+  {
+    id: 5,
+    imageUrl: "/project5.jpg",
+    category: "Print",
+    title: "Project 5",
+    description: "Sample project description",
+    size: "tall",
+    slug: "project-5"
+  },
+  {
+    id: 6,
+    imageUrl: "/project6.jpg",
+    category: "Photography",
+    title: "Project 6",
+    description: "Sample project description",
+    size: "square",
+    slug: "project-6"
+  },
+  {
+    id: 7,
+    imageUrl: "/project7.jpg",
+    category: "UI/UX",
+    title: "Project 7",
+    description: "Sample project description",
+    size: "wide",
+    slug: "project-7"
+  },
+  {
+    id: 8,
+    imageUrl: "/project8.jpg",
+    category: "3D Design",
+    title: "Project 8",
+    description: "Sample project description",
+    size: "tall",
+    slug: "project-8"
+  },
+  {
+    id: 9,
+    imageUrl: "/project9.jpg",
+    category: "Motion Graphics",
+    title: "Project 9",
+    description: "Sample project description",
+    size: "xwide",
+    slug: "project-9"
+  },
+  {
+    id: 10,
+    imageUrl: "/project10.jpg",
+    category: "Packaging",
+    title: "Project 10",
+    description: "Sample project description",
+    size: "xtall",
+    slug: "project-10"
+  }
 ];
 
-const PortfolioPage = () => {
+export default function PortfolioPage() {
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-center mb-12">Our Work</h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold mb-12 text-center">Our Work</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 auto-rows-[minmax(200px,auto)] grid-auto-flow-dense">
         {projects.map((project) => (
-          <Link href={`/portfolio/${project.slug}`} key={project.id} className="group block border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 dark:border-gray-700">
-            {/* Placeholder Image - Replace with actual Image component if using */}
-            <div className="w-full h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-              <span className="text-gray-500">Image Placeholder</span>
-              {/* <Image src={project.imageUrl} alt={project.title} width={400} height={300} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/> */}
-            </div>
-            <div className="p-4 bg-white dark:bg-gray-800">
-              <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors">{project.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">{project.description}</p>
-            </div>
+          <Link
+            key={project.id}
+            href={`/portfolio/${project.slug}`}
+            className={`
+              ${project.size === 'wide' ? 'lg:col-span-2' : ''}
+              ${project.size === 'tall' ? 'lg:row-span-2' : ''}
+              ${project.size === 'square' ? 'lg:col-span-1 lg:row-span-1' : ''}
+              ${project.size === 'xwide' ? 'sm:col-span-2 lg:col-span-3' : ''}
+              ${project.size === 'xtall' ? 'sm:row-span-2 lg:row-span-3' : ''}
+              transition-transform duration-300 hover:scale-[1.02] hover:z-10
+            `}
+          >
+            <ProjectCard
+              imageUrl={project.imageUrl}
+              category={project.category}
+              title={project.title}
+              description={project.description}
+            />
           </Link>
         ))}
       </div>
     </div>
   );
-};
-
-export default PortfolioPage;
+}

@@ -191,6 +191,14 @@ html {
   }
 }
 
+@layer components {
+  .border-primary {
+    border-color: var(--primary);
+  }
+  .border-primary-dark {
+    border-color: var(--primary-dark);
+  }
+}
 /* Custom utility classes */
 .fade-in-up {
   animation: fadeUp 0.8s forwards;
@@ -199,7 +207,8 @@ html {
 /* Form input styles */
 .form-input,
 .form-textarea {
-  @apply w-full p-4 rounded-lg bg-white/5 border border-white/10 text-gray-300 placeholder-gray focus:outline-none focus:border-primary focus:bg-white/[.08] transition-all duration-300;
+  @apply w-full p-4 rounded-lg bg-white/5 border border-white/10 placeholder-gray-400 focus:outline-none focus:border-primary focus:bg-white/[.08] transition-all duration-300;
+  color: var(--gray-light);
 }
 
 .light .form-input,
