@@ -1,7 +1,7 @@
 'use client'; // Needed for potential future state (e.g., mobile menu toggle)
 
 import React from 'react';
-import Link from 'next/link'; // Use NextLink for the main logo link to home
+import Link from 'next/link';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 const Header = () => {
@@ -28,15 +28,22 @@ const Header = () => {
     // Added z-index and positioning to ensure it stays above background
     <header className="py-6 md:py-8 absolute top-0 left-0 right-0 z-20">
       <div className="container mx-auto px-6">
-        <nav className="flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-light no-underline">
-            Nexus<span className="text-secondary text-3xl leading-none">•</span>
-          </Link>
+        <nav className="grid grid-cols-3 items-center">
+          {/* Logo - left aligned */}
+          <div className="flex justify-start">
+            <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-light no-underline">
+              Nexus<span className="text-secondary text-3xl leading-none">•</span>
+            </Link>
+          </div>
 
-          {/* Desktop Navigation Links */}
-          {/* Use regular <a> tags for smooth scrolling on the same page */}
-          <div className="hidden md:flex gap-8 nav-links">
+          {/* Desktop Navigation Links - centered */}
+          <div className="hidden md:flex gap-8 justify-center nav-links">
+            <Link
+              href="/services"
+              className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-light relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+            >
+              Services
+            </Link>
             <a
               href="#work"
               onClick={handleSmoothScroll}
@@ -51,13 +58,12 @@ const Header = () => {
             >
               Approach
             </a>
-            <a
-              href="#about"
-              onClick={handleSmoothScroll}
+            <Link
+              href="/about"
               className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-light relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               About
-            </a>
+            </Link>
             <a
               href="#contact"
               onClick={handleSmoothScroll}
@@ -67,11 +73,8 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Action Buttons */}
-          <div className="hidden md:flex gap-4 buttons">
-            <button className="btn bg-transparent border border-gray text-light px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ease-in-out hover:border-light hover:-translate-y-0.5">
-              Log In
-            </button>
+          {/* Action Buttons - right aligned */}
+          <div className="hidden md:flex gap-4 justify-end buttons">
             <button className="btn bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ease-in-out hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30">
               Start a Project
             </button>
