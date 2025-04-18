@@ -15,8 +15,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         <div className="text-primary text-sm font-semibold mb-2">
           {project.category}
         </div>
-        <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-        <p className="text-lg text-gray-600 mb-8">{project.description}</p>
+        <h1 className="text-4xl font-bold mb-4 text-black dark:text-white">{project.title}</h1>
+        <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">{project.description}</p>
       </div>
 
       <div className="relative aspect-video w-full mb-12 rounded-2xl overflow-hidden">
