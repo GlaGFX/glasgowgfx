@@ -6,11 +6,10 @@ import type { Metadata } from 'next';
 import { projects } from '../../../data/projects'; // Import centralized data
 import type { Project } from '@/types'; // Import the Project type
 
-// Import PageProps from our types
-import type { PageProps } from '@/types';
+// Import PageProps from our types - Removed as it's no longer used and conflicts
 
 // Dynamic metadata generation
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }): Promise<Metadata> {
   const project = projects.find(p => p.slug === params.slug);
 
   if (!project) {

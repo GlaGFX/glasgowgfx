@@ -3,15 +3,6 @@
 /// <reference types="next/navigation-types" />
 
 // Type for dynamic route page props
-type PageProps = {
-  params: {
-    [key: string]: string | string[];
-  };
-  searchParams?: {
-    [key: string]: string | string[] | undefined;
-  } | undefined;
-};
-
 // Wildcard type declarations for components
 declare module '@/components/layout/*' {
   import { FC, ReactNode } from 'react';
