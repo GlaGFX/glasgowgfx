@@ -8,8 +8,10 @@ import type { Project } from '@/types';
 
 
 // Dynamic metadata generation
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const project = projects.find(p => p.slug === params.slug);
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const queryParams = searchParams ? await searchParams : {};
+  const project = projects.find(p => p.slug === slug);
 
   if (!project) {
     return {
@@ -38,13 +40,14 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
 }
 
 type PageProps = {
-  params: { slug: string }
-  searchParams?: { [key: string]: string | string[] | undefined }
+  params: Promise<{ slug: string }>
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export default function ProjectDetailPage({ params }: PageProps) {
-  // Access the slug directly from params
-  const { slug } = params;
+export default async function ProjectDetailPage({ params, searchParams }: PageProps) {
+  // Await both promises
+  const { slug } = await params;
+  const queryParams = searchParams ? await searchParams : {};
   const project = projects.find(p => p.slug === slug);
 
   if (!project) {
