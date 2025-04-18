@@ -1,82 +1,71 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'; // Example icons
 
-// Optional: Add metadata specific to the Contact page
 export const metadata: Metadata = {
   title: 'Contact Us | Glasgow GFX',
-  description: 'Get in touch with the Glasgow GFX design studio.',
+  description: 'Get in touch with Glasgow GFX. We\'d love to hear about your project.',
 };
 
 const ContactPage = () => {
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-center mb-12">Contact Us</h1>
+    <div className="relative">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 text-center">
+        <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
+        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          Ready to start your next project? Let's talk.
+        </p>
+      </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-
-        {/* Contact Information Section */}
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
-          <p className="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-            We'd love to hear about your project or answer any questions you might have. Reach out to us using the details below.
-          </p>
-          <div className="space-y-4">
-            <div>
-              <h3 className="font-semibold">Email</h3>
-              {/* Replace with actual email or mailto link */}
-              <a href="mailto:hello@glasgowgfx.example.com" className="text-blue-600 hover:underline">
-                hello@glasgowgfx.example.com
-              </a>
-            </div>
-            <div>
-              <h3 className="font-semibold">Phone</h3>
-              {/* Replace with actual phone number */}
-              <p className="text-gray-700 dark:text-gray-400">+44 141 123 4567</p>
-            </div>
-            <div>
-              <h3 className="font-semibold">Address</h3>
-              {/* Replace with actual address */}
-              <p className="text-gray-700 dark:text-gray-400">
-                123 Design Street<br />
-                Glasgow, G1 1AA<br />
-                United Kingdom
+      {/* Contact Details & Form Section */}
+      <section className="py-16 max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-16">
+          {/* Contact Info */}
+          <div>
+            <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
+            <div className="space-y-6 text-gray-400">
+              <p className="flex items-center">
+                <FiMail className="mr-3 h-5 w-5 text-primary" />
+                <span>hello@glasgowgfx.com</span>
+              </p>
+              <p className="flex items-center">
+                <FiPhone className="mr-3 h-5 w-5 text-primary" />
+                <span>+44 141 123 4567</span>
+              </p>
+              <p className="flex items-center">
+                <FiMapPin className="mr-3 h-5 w-5 text-primary" />
+                <span>123 Design Street, Glasgow, G1 1AA</span>
               </p>
             </div>
+            {/* Optional: Add a map here later */}
           </div>
-        </section>
 
-        {/* Placeholder for Contact Form Section */}
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Send Us a Message</h2>
-          {/*
-            Placeholder for a form.
-            Implement using a library like react-hook-form and connect to:
-            1. A simple service like Formspree (easiest)
-            2. A Next.js API Route (requires backend logic)
-          */}
-          <form className="space-y-4">
-             <p className="text-sm text-gray-500 dark:text-gray-400">(Contact form placeholder - implementation needed)</p>
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
-              <input type="text" id="name" name="name" disabled className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white disabled:opacity-50" placeholder="Your Name" />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
-              <input type="email" id="email" name="email" disabled className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white disabled:opacity-50" placeholder="your.email@example.com" />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
-              <textarea id="message" name="message" rows={4} disabled className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white disabled:opacity-50" placeholder="Your message..."></textarea>
-            </div>
-            <div>
-              <button type="submit" disabled className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
-                Send Message (Disabled)
-              </button>
-            </div>
-          </form>
-        </section>
-
-      </div>
+          {/* Contact Form Placeholder */}
+          <div>
+            <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
+            <form className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                <input type="text" id="name" name="name" className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="Your Name" />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                <input type="email" id="email" name="email" className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="your.email@example.com" />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                <textarea id="message" name="message" rows={4} className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="How can we help?"></textarea>
+              </div>
+              <div>
+                <button type="submit" className="px-6 py-3 bg-primary text-white font-semibold rounded-md hover:bg-primary-dark transition duration-300">
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

@@ -42,8 +42,8 @@ export default function PortfolioPage() {
             onClick={() => setActiveCategory('All')}
             className={`px-6 py-2 rounded-full border transition-colors ${
               activeCategory === 'All'
-                ? 'bg-primary border-primary text-white' // Active state is fine
-                : 'bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700' // Inactive state
+                ? 'bg-primary/90 border-primary text-white' // Slightly reduced opacity
+                : 'bg-gray-100/80 dark:bg-gray-800/80 border-gray-300/80 dark:border-gray-700/80 text-gray-700/90 dark:text-gray-300/90 hover:bg-gray-200/80 dark:hover:bg-gray-700/80' // Reduced opacity
             }`}
           >
             All
@@ -54,8 +54,8 @@ export default function PortfolioPage() {
               onClick={() => setActiveCategory(category)}
               className={`px-6 py-2 rounded-full border transition-colors ${
                 activeCategory === category
-                  ? 'bg-primary/20 dark:bg-primary/30 border-primary/50 text-primary dark:text-primary-light' // Active category state
-                  : 'bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700' // Inactive state
+                  ? 'bg-primary/15 dark:bg-primary/25 border-primary/40 text-primary/90 dark:text-primary-light/90' // Reduced opacity
+                  : 'bg-gray-100/80 dark:bg-gray-800/80 border-gray-300/80 dark:border-gray-700/80 text-gray-700/90 dark:text-gray-300/90 hover:bg-gray-200/80 dark:hover:bg-gray-700/80' // Reduced opacity
               }`}
             >
               {category}

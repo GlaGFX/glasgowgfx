@@ -68,26 +68,24 @@ const Header = () => {
               Work
             </Link>
 
-            <a
-              href="/#approach" // Link to section on homepage
-              onClick={handleSmoothScroll}
+            <Link
+              href="/approach"
               className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               Approach
-            </a>
+            </Link>
             <Link
               href="/about"
               className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               About
             </Link>
-            <a
-              href="/#contact" // Link to section on homepage
-              onClick={handleSmoothScroll}
+            <Link
+              href="/contact" // Link to contact page
               className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               Contact
-            </a>
+            </Link>
           </div>
 
           {/* Action Buttons - right aligned */}
@@ -134,13 +132,13 @@ const Header = () => {
                 >
                   Work
                 </Link>
-                <a
-                  href="/#approach"
-                  onClick={handleSmoothScroll} // handleSmoothScroll now closes menu
+                <Link
+                  href="/approach"
+                  onClick={closeMobileMenu} // Close menu on click
                   className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground"
                 >
                   Approach
-                </a>
+                </Link>
                 <Link
                   href="/about"
                   className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground"
@@ -148,13 +146,13 @@ const Header = () => {
                 >
                   About
                 </Link>
-                <a
-                  href="/#contact"
-                  onClick={handleSmoothScroll} // handleSmoothScroll now closes menu
+                <Link
+                  href="/contact"
+                  onClick={closeMobileMenu} // Close menu on click
                   className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground"
                 >
                   Contact
-                </a>
+                </Link>
                 <div className="pt-4 pb-2"> {/* Add padding for button */}
                   <Link
                     href="/contact"
