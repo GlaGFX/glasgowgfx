@@ -6,7 +6,13 @@ import { FiPenTool, FiCode, FiUsers } from 'react-icons/fi';
 
 export const metadata: Metadata = {
   title: 'Our Services | Glasgow GFX',
-  description: 'Explore the professional design and development services offered by Glasgow GFX.',
+  description: 'Explore the professional design and development services offered by Glasgow GFX..',
+};
+
+type ServiceCardProps = {
+  title: string;
+  icon: React.ElementType;
+  children?: React.ReactNode; // Add children prop
 };
 
 const ServicesPage = () => {
@@ -32,9 +38,6 @@ const ServicesPage = () => {
               <Link href="/services/motion-graphics" className="hover:underline flex-1">Motion Graphics</Link>
             </li>
           </ul>
-          <div className="mt-6">
-            <Link href="/services/development" className="text-primary hover:underline font-medium">Learn more →</Link>
-          </div>
           <div className="mt-6">
             <Link href="/services/design" className="text-primary hover:underline font-medium">Learn more →</Link>
           </div>
