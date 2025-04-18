@@ -4,12 +4,12 @@
 
 // Type for dynamic route page props
 type PageProps = {
-  params: Promise<{
+  params: {
     [key: string]: string | string[];
-  }>;
-  searchParams?: Promise<{
+  };
+  searchParams?: {
     [key: string]: string | string[] | undefined;
-  }> | undefined;
+  } | undefined;
 };
 
 // Wildcard type declarations for components
