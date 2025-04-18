@@ -5,6 +5,22 @@ import { motion } from 'framer-motion';
 import { FeatureCard } from '@/components/FeatureCard';
 import { ProjectCard } from '@/components/ProjectCard';
 
+// TEST BUTTON - REMOVE AFTER DEBUGGING
+const ForceLightMode = () => {
+  const setLightMode = () => {
+    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add('light');
+  };
+  return (
+    <button 
+      onClick={setLightMode}
+      className="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-md z-50"
+    >
+      Force Light Mode
+    </button>
+  );
+};
+
 export default function Home() {
   useEffect(() => {
     // Smooth scrolling for anchor links with proper type casting
@@ -290,6 +306,8 @@ export default function Home() {
           </motion.form>
         </div>
       </section>
+
+      <ForceLightMode />
     </main>
   );
 }

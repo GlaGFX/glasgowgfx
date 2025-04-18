@@ -40,10 +40,10 @@ export default function PortfolioPage() {
         <div className="flex flex-wrap justify-center gap-4 mb-16">
           <button
             onClick={() => setActiveCategory('All')}
-            className={`px-6 py-2 rounded-full border transition hover:bg-primary hover:border-primary ${
+            className={`px-6 py-2 rounded-full border transition-colors ${
               activeCategory === 'All'
-                ? 'bg-primary border-primary text-white'
-                : 'bg-white/10 text-white border-white/20'
+                ? 'bg-primary border-primary text-white' // Active state is fine
+                : 'bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700' // Inactive state
             }`}
           >
             All
@@ -52,10 +52,10 @@ export default function PortfolioPage() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-2 rounded-full border transition hover:bg-white/10 hover:text-white ${
+              className={`px-6 py-2 rounded-full border transition-colors ${
                 activeCategory === category
-                  ? 'bg-white/20 text-white border-white/30' // Style for active category
-                  : 'bg-white/5 text-gray-300 border-white/10'
+                  ? 'bg-primary/20 dark:bg-primary/30 border-primary/50 text-primary dark:text-primary-light' // Active category state
+                  : 'bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700' // Inactive state
               }`}
             >
               {category}
@@ -83,16 +83,21 @@ export default function PortfolioPage() {
               </div>
 
               {/* Content */}
-              <div className="relative h-full flex flex-col justify-between p-6 text-white z-10">
+              {/* Removed text-white from container */}
+              <div className="relative h-full flex flex-col justify-between p-6 z-10">
                 <div>
-                  <div className="text-xs font-semibold tracking-wide uppercase mb-2 opacity-80">
+                  {/* Added theme-aware text color */}
+                  <div className="text-xs font-semibold tracking-wide uppercase mb-2 text-gray-600 dark:text-gray-400 opacity-80 dark:opacity-70">
                     {project.category}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-sm text-white/80">{project.description}</p>
+                  {/* Added theme-aware text color */}
+                  <h3 className="text-xl md:text-2xl font-bold mb-2 text-gray-900 dark:text-white">{project.title}</h3>
+                  {/* Added theme-aware text color */}
+                  <p className="text-sm text-gray-700 dark:text-gray-300">{project.description}</p>
                 </div>
 
-                <div className="mt-4 flex items-center font-medium text-sm opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                {/* Added theme-aware text color to "View Project" link */}
+                <div className="mt-4 flex items-center font-medium text-sm text-primary dark:text-primary-light opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                   View Project <FiArrowRight className="ml-2" />
                 </div>
               </div>
@@ -102,8 +107,10 @@ export default function PortfolioPage() {
 
         {/* CTA Section */}
         <div className="mt-24 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">Ready to start your project?</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+          {/* Adjusted heading color for better contrast if needed, assuming globals handle dark mode */}
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Ready to start your project?</h2>
+          {/* Adjusted paragraph color for better contrast */}
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
             Have a project in mind? We'd love to collaborate with you to bring your vision to life.
           </p>
           <Link
