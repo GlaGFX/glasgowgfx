@@ -114,17 +114,24 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <motion.div 
-          className="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-gray text-xs"
+        <motion.button
+          className="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-gray text-xs cursor-pointer bg-transparent border-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
+          onClick={() => {
+            const twoThirdsHeight = document.documentElement.scrollHeight * (2/3);
+            window.scrollTo({
+              top: twoThirdsHeight,
+              behavior: 'smooth'
+            });
+          }}
         >
           <span>Scroll to explore</span>
           <div className="scroll-arrow w-8 h-8 border-2 border-gray rounded-full flex items-center justify-center animate-bounce">
             ↓
           </div>
-        </motion.div>
+        </motion.button>
       </section>
 
       {/* Features Section */}
