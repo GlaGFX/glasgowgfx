@@ -64,12 +64,7 @@ export default async function ProjectDetailPage({ params, searchParams }: PagePr
     <div className="pt-32 pb-24 min-h-screen">
       {/* Hero Section */}
       <div className="relative h-[50vh] md:h-[70vh] mb-16 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${project.coverImage || project.imageUrl})` }}
-        >
-          <div className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-90`}></div>
-        </div>
+        <div className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-90`}></div>
 
         <div className="absolute inset-0 flex items-center">
           <div className="container mx-auto px-6">

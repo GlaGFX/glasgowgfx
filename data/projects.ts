@@ -13,15 +13,13 @@ export const projects: Project[] = [
     challenge: "Harmony Finance needed a complete overhaul of their digital banking platform to improve accessibility, reduce user friction, and modernize their visual identity while maintaining trust and security.",
     approach: "We conducted extensive user research with diverse user groups to identify pain points in the existing platform. Our design process emphasized inclusive design principles, with multiple iterations and usability testing at each stage.",
     outcome: "The redesigned platform saw a 42% increase in user satisfaction scores, 27% reduction in support tickets, and a 35% improvement in task completion rates. The new design was successfully implemented across web and mobile applications.",
-    imageUrl: "/api/placeholder/800/500?text=Harmony+Finance",
-    coverImage: "/api/placeholder/1920/1080?text=Harmony+Finance+Cover",
+    imageUrl: "/Images/harmoney-finance.png",
+    coverImage: "/Images/harmoney-finance.png",
     images: [
-      "/api/placeholder/1200/800?text=Harmony+Finance+1",
-      "/api/placeholder/1200/800?text=Harmony+Finance+2",
-      "/api/placeholder/800/1200?text=Harmony+Finance+3",
+      "/Images/harmoney-finance.png"
     ],
     color: "from-violet-500 to-purple-500",
-    size: "col-span-2 row-span-2",
+    size: "md:col-span-2 md:row-span-2 col-span-1 row-span-1", // Large anchor
     slug: "harmony-finance"
   },
   {
@@ -43,7 +41,7 @@ export const projects: Project[] = [
       "/api/placeholder/1200/800?text=Lumina+Health+3",
     ],
     color: "from-blue-500 to-cyan-500",
-    size: "col-span-1 row-span-2",
+    size: "md:col-span-1 md:row-span-1 col-span-1 row-span-1", // Standard
     slug: "lumina-health"
   },
   {
@@ -62,7 +60,7 @@ export const projects: Project[] = [
     coverImage: "/api/placeholder/1920/1080?text=Scope+PM+Cover",
     images: ["/api/placeholder/1200/800?text=Scope+PM+1"],
     color: "from-emerald-500 to-teal-500",
-    size: "col-span-2 row-span-1",
+    size: "md:col-span-1 md:row-span-2 col-span-1 row-span-1", // Tall
     slug: "scope-project-management"
   },
   {
@@ -80,7 +78,7 @@ export const projects: Project[] = [
     coverImage: "/api/placeholder/1920/1080?text=Atlas+Travel+Cover",
     images: ["/api/placeholder/800/1200?text=Atlas+Travel+1"],
     color: "from-amber-500 to-orange-500",
-    size: "col-span-1 row-span-1",
+    size: "md:col-span-1 md:row-span-1 col-span-1 row-span-1", // Standard item
     slug: "atlas-travel-app"
   },
   {
@@ -98,7 +96,7 @@ export const projects: Project[] = [
     coverImage: "/api/placeholder/1920/1080?text=Quantum+Analytics+Cover",
     images: ["/api/placeholder/1200/800?text=Quantum+Analytics+1"],
     color: "from-fuchsia-500 to-pink-500",
-    size: "col-span-1 row-span-2",
+    size: "md:col-span-1 md:row-span-2 col-span-1 row-span-1", // Tall
     slug: "quantum-analytics"
   },
   {
@@ -116,7 +114,7 @@ export const projects: Project[] = [
     coverImage: "/api/placeholder/1920/1080?text=EchoWave+Cover",
     images: ["/api/placeholder/1200/800?text=EchoWave+1"],
     color: "from-indigo-500 to-purple-500",
-    size: "col-span-2 row-span-1",
+    size: "md:col-span-2 md:row-span-1 col-span-1 row-span-1", // Wide
     slug: "echowave-music"
   },
   {
@@ -134,7 +132,7 @@ export const projects: Project[] = [
     coverImage: "/api/placeholder/1920/1080?text=Verdant+Cover",
     images: ["/api/placeholder/1200/800?text=Verdant+1"],
     color: "from-green-500 to-emerald-500",
-    size: "col-span-1 row-span-2",
+    size: "md:col-span-2 md:row-span-1 col-span-1 row-span-1", // Wide
     slug: "verdant-ecommerce"
   },
   {
@@ -152,7 +150,7 @@ export const projects: Project[] = [
     coverImage: "/api/placeholder/1920/1080?text=Pulse+Fitness+Cover",
     images: ["/api/placeholder/800/1200?text=Pulse+Fitness+1"],
     color: "from-red-500 to-rose-500",
-    size: "col-span-2 row-span-2",
+    size: "md:col-span-2 md:row-span-2 col-span-1 row-span-1", // Large
     slug: "pulse-fitness"
   }
 ];

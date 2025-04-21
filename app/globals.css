@@ -26,13 +26,13 @@
 }
 
 .light {
-  --background: #e5e7eb;
-  --foreground: #000000;
+  --background: #f9fafb;
+  --foreground: #111827;
   --primary: #4f46e5;
   --primary-dark: #4338ca;
   --secondary: #db2777;
-  --gray: #6b7280;
-  --gray-light: #6b7280;
+  --gray: #4b5563;
+  --gray-light: #9ca3af;
 }
 
 body {

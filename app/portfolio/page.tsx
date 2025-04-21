@@ -6,6 +6,7 @@ import Link from 'next/link';
 // Removed motion import as it wasn't used in the final structure provided by user
 import { FiArrowRight } from 'react-icons/fi';
 import { projects, categories } from '../../data/projects'; // Import centralized data
+import { ProjectCard } from '@/components/ProjectCard'; // Import the ProjectCard component
 
 // Metadata can't be dynamically generated in 'use client' components easily.
 // We'll keep the static one for now, or move it to a parent server component if needed later.
@@ -63,45 +64,19 @@ export default function PortfolioPage() {
           ))}
         </div>
 
-        {/* Bento Grid */}
-        {/* Ensure Tailwind grid template columns/rows are configured if using arbitrary values like project.size */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[minmax(250px,auto)]">
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
-            <Link
-              key={project.id}
-              href={`/portfolio/${project.slug}`}
-              // Apply dynamic sizing class from project data
-              className={`group relative overflow-hidden rounded-2xl ${project.size} transition-transform duration-500 hover:-translate-y-2`}
-            >
-              {/* Background Image with Gradient Overlay */}
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{ backgroundImage: `url(${project.imageUrl})` }}
-              >
-                {/* Apply dynamic gradient color from project data */}
-                <div className={`absolute inset-0 bg-gradient-to-tr ${project.color} opacity-90`}></div>
-              </div>
-
-              {/* Content */}
-              {/* Removed text-white from container */}
-              <div className="relative h-full flex flex-col justify-between p-6 z-10">
-                <div>
-                  {/* Added theme-aware text color */}
-                  <div className="text-xs font-semibold tracking-wide uppercase mb-2 text-gray-600 dark:text-gray-400 opacity-80 dark:opacity-70">
-                    {project.category}
-                  </div>
-                  {/* Added theme-aware text color */}
-                  <h3 className="text-xl md:text-2xl font-bold mb-2 text-gray-900 dark:text-white">{project.title}</h3>
-                  {/* Added theme-aware text color */}
-                  <p className="text-sm text-gray-700 dark:text-gray-300">{project.description}</p>
-                </div>
-
-                {/* Added theme-aware text color to "View Project" link */}
-                <div className="mt-4 flex items-center font-medium text-sm text-primary dark:text-primary-light opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                  View Project <FiArrowRight className="ml-2" />
-                </div>
-              </div>
-            </Link>
+            <div key={project.id} className="group">
+              <ProjectCard
+                imageUrl={project.imageUrl}
+                category={project.category}
+                title={project.title}
+                description={project.description}
+                gridClasses={project.size} // Pass the Tailwind classes as gridClasses
+                slug={project.slug} // Add missing slug prop
+              />
+            </div>
           ))}
         </div>
 

@@ -23,11 +23,13 @@ declare module '@/components/FeatureCard' {
 
 declare module '@/components/ProjectCard' {
   import { FC } from 'react';
+  // Reverted ProjectCard declaration (size prop handled differently now)
   interface ProjectCardProps {
     imageUrl: string;
     category: string;
     title: string;
     description: string;
+    // Size prop removed from here, will be handled internally or passed differently if needed
   }
   const ProjectCard: FC<ProjectCardProps>;
   export default ProjectCard;
@@ -49,6 +51,7 @@ export interface Project {
   coverImage?: string; // Detail page hero
   images?: string[]; // Detail page gallery
   color: string; // For gradient overlay
-  size: string; // For Bento grid layout
+  // Reverted size type back to string to hold Tailwind classes
+  size: string; // For Bento grid layout (Tailwind classes)
   slug: string;
 }

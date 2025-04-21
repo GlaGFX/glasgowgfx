@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FeatureCard } from '@/components/FeatureCard';
 import { ProjectCard } from '@/components/ProjectCard';
+import { projects } from '@/data/projects';
 
 // TEST BUTTON - REMOVE AFTER DEBUGGING
 const ForceLightMode = () => {
@@ -128,7 +129,7 @@ export default function Home() {
 
       {/* Features Section */}
       <section className="container mx-auto px-6 py-20 md:py-32" id="approach">
-        <div className="feature-cards grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="feature-cards grid grid-cols-1 md:grid-cols-3 gap-8 h-full">
           {[
             {
               icon: "✦",
@@ -152,6 +153,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.6 }}
+              className="h-full"
             >
               <FeatureCard {...feature} />
             </motion.div>
@@ -172,26 +174,7 @@ export default function Home() {
         </motion.h2>
 
         <div className="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              imageUrl: "/api/placeholder/400/320?text=Project+1",
-              category: "UI/UX Design",
-              title: "Harmony Finance Platform",
-              description: "A comprehensive redesign focused on accessibility and user experience."
-            },
-            {
-              imageUrl: "/api/placeholder/400/320?text=Project+2",
-              category: "Brand Identity",
-              title: "Lumina Health",
-              description: "Creating a cohesive brand identity for a healthcare startup."
-            },
-            {
-              imageUrl: "/api/placeholder/400/320?text=Project+3",
-              category: "Web Application",
-              title: "Scope Project Management",
-              description: "An intuitive project management tool for creative teams."
-            }
-          ].map((project, index) => (
+          {projects.slice(0, 3).map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}

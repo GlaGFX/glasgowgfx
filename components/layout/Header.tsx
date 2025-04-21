@@ -47,7 +47,7 @@ const Header = () => {
           {/* Logo - left aligned */}
           <div className="flex justify-start">
             {/* Ensure logo styling matches the rest of the site */}
-            <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-foreground no-underline">
+            <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-black dark:text-white no-underline">
               Nexus<span className="text-primary text-3xl leading-none">•</span> {/* Changed secondary to primary */}
             </Link>
           </div>
@@ -67,13 +67,14 @@ const Header = () => {
             >
               Work
             </Link>
-
             <Link
-              href="/approach"
+              href="/gallery"
               className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
-              Approach
+              Gallery
             </Link>
+
+
             <Link
               href="/about"
               className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
@@ -133,12 +134,13 @@ const Header = () => {
                   Work
                 </Link>
                 <Link
-                  href="/approach"
-                  onClick={closeMobileMenu} // Close menu on click
+                  href="/gallery"
                   className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground"
+                  onClick={closeMobileMenu}
                 >
-                  Approach
+                  Gallery
                 </Link>
+
                 <Link
                   href="/about"
                   className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground"

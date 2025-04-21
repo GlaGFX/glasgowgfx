@@ -26,7 +26,8 @@ interface GradientCircle {
 const StarfieldBackground: React.FC = () => {
   const [stars, setStars] = useState<Star[]>([]);
   const [gradients, setGradients] = useState<GradientCircle[]>([]);
-  const starCount = 150;
+  const [isDark, setIsDark] = useState(false);
+  const starCount = isDark ? 250 : 150;
   const gradientColors = useMemo(() => [
     { color: 'bg-primary', opacity: 0.15 }, // Tailwind class for primary color
     { color: 'bg-secondary', opacity: 0.15 }, // Tailwind class for secondary color
@@ -34,6 +35,9 @@ const StarfieldBackground: React.FC = () => {
   ], []);
 
   useEffect(() => {
+    // Check for dark mode
+    setIsDark(document.documentElement.classList.contains('dark'));
+    
     // Generate Stars
     const generatedStars: Star[] = [];
     for (let i = 0; i < starCount; i++) {
@@ -45,7 +49,7 @@ const StarfieldBackground: React.FC = () => {
         top: `${Math.random() * 100}%`,
         duration: `${Math.random() * 3 + 4}s`, // Adjusted duration
         delay: `${Math.random() * 5}s`,
-        brightness: `${Math.random() * 0.4 + 0.2}`, // Dimmer stars
+        brightness: isDark ? `${Math.random() * 0.6 + 0.3}` : `${Math.random() * 0.4 + 0.2}`,
       });
     }
     setStars(generatedStars);
