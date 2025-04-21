@@ -31,7 +31,8 @@ const StarfieldBackground: React.FC = () => {
   const gradientColors = useMemo(() => [
     { color: 'bg-primary', opacity: 0.15 }, // Tailwind class for primary color
     { color: 'bg-secondary', opacity: 0.15 }, // Tailwind class for secondary color
-    { color: 'bg-purple-500', opacity: 0.15 } // Example additional color
+    { color: 'bg-purple-500', opacity: 0.15 }, // Example additional color
+    { color: 'bg-green-500', opacity: 0.2 } // Aurora effect
   ], []);
 
   useEffect(() => {
@@ -57,15 +58,26 @@ const StarfieldBackground: React.FC = () => {
     // Generate Gradient Circles
     const generatedGradients: GradientCircle[] = [];
     gradientColors.forEach((colorInfo, index) => {
-      const size = Math.random() * 400 + 300; // Adjusted size range
+      // Special handling for green aurora effect (last item)
+      const isAurora = index === gradientColors.length - 1;
+      const size = isAurora
+        ? Math.random() * 300 + 500 // Larger size for aurora (500-800px)
+        : Math.random() * 400 + 300; // Normal size for others (300-700px)
+      
       generatedGradients.push({
         id: index,
         size: size,
-        left: `${Math.random() * 80}%`, // Keep within bounds
-        top: `${Math.random() * 80 - 10}%`, // Adjust vertical position
+        left: isAurora
+          ? `${Math.random() * 60 + 20}%` // More centered horizontally
+          : `${Math.random() * 80}%`,
+        top: isAurora
+          ? `${Math.random() * 60 - 10}%` // More centered vertically
+          : `${Math.random() * 80 - 10}%`,
         color: colorInfo.color,
         opacity: colorInfo.opacity,
-        animationDuration: `${8 + index * 2}s`,
+        animationDuration: isAurora
+          ? `${15 + index * 2}s` // Slower animation for aurora
+          : `${8 + index * 2}s`,
         animationDelay: `${index * 1.5}s`,
       });
     });
