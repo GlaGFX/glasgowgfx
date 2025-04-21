@@ -46,16 +46,16 @@ const ContactPage = () => {
             <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
             <form className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 form-label">Name</label>
-                <input type="text" id="name" name="name" className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 bg-opacity-80 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="Your Name" />
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                <input type="text" id="name" name="name" className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="Your Name" />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 form-label">Email</label>
-                <input type="email" id="email" name="email" className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 bg-opacity-80 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="your.email@example.com" />
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                <input type="email" id="email" name="email" className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="your.email@example.com" />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 form-label">Message</label>
-                <textarea id="message" name="message" rows={4} className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 bg-opacity-80 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="How can we help?"></textarea>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                <textarea id="message" name="message" rows={4} className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="How can we help?"></textarea>
               </div>
               <div>
                 <button type="submit" className="px-6 py-3 bg-primary text-white font-semibold rounded-md hover:bg-primary-dark transition duration-300">
