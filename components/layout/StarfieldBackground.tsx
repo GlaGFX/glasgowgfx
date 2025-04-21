@@ -74,7 +74,11 @@ const StarfieldBackground: React.FC = () => {
   }, [gradientColors]); // Re-run if gradientColors changes (though it's memoized)
 
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true"
+      style={{
+        maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)'
+      }}>
       {/* Stars */}
       {stars.map((star) => (
         <div

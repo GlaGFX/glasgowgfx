@@ -34,8 +34,12 @@ const ContactPage = () => {
                 <span>+44 141 123 4567</span>
               </p>
               <p className="flex items-center">
+                <FiPhone className="mr-3 h-5 w-5 text-primary" />
+                <span>07572 221612</span>
+              </p>
+              <p className="flex items-center">
                 <FiMapPin className="mr-3 h-5 w-5 text-primary" />
-                <span>123 Design Street, Glasgow, G1 1AA</span>
+                <span>The Pentagon Business Centre, 36-38 Washington St, Glasgow G3 8AZ</span>
               </p>
             </div>
             {/* Optional: Add a map here later */}

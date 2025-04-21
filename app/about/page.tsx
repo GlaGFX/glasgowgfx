@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { FiUsers, FiAward, FiClock, FiLayers } from 'react-icons/fi';
 import ServiceCard from '@/components/ServiceCard';
 import TeamMemberCard from '@/components/TeamMemberCard';
+import ProcessVisualization from '@/components/ProcessVisualization';
+import StarfieldBackground from '@/components/layout/StarfieldBackground';
 
 export const metadata: Metadata = {
   title: 'About Us | Glasgow GFX',
@@ -12,10 +14,11 @@ export const metadata: Metadata = {
 const AboutPage = () => {
   return (
     <div className="relative">
+      {/* Background handled by layout */}
       {/* Hero Section */}
-      <section className="pt-32 pb-20 text-center">
+      <section className="pt-32 pb-20 text-center container mx-auto px-6">
         <h1 className="text-5xl font-bold mb-6">About Glasgow GFX</h1>
-        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+        <p className="text-xl text-gray max-w-3xl mx-auto">
           Crafting digital experiences that inspire and transform
         </p>
       </section>
@@ -23,7 +26,7 @@ const AboutPage = () => {
       {/* Our Story */}
       <section className="py-16 max-w-4xl mx-auto px-6">
         <h2 className="text-3xl font-bold mb-8 text-center">Our Story</h2>
-        <div className="space-y-6 text-gray-400">
+        <div className="space-y-6 text-gray">
           <p>
             Founded in 2015, Glasgow GFX began as a small collective of designers passionate about
             creating meaningful digital experiences. Today, we've grown into a multidisciplinary
@@ -35,6 +38,9 @@ const AboutPage = () => {
           </p>
         </div>
       </section>
+
+      {/* Our Process */}
+      <ProcessVisualization />
 
       {/* Core Values */}
       <section className="py-16">

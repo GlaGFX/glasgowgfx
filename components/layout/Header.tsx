@@ -43,7 +43,7 @@ const Header = () => {
     <header className="py-6 md:py-8 fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-white/10">
       <div className="container mx-auto px-6">
         {/* Changed from grid to flex for better alignment control */}
-        <nav className="flex justify-between items-center">
+        <nav className="flex justify-center items-center space-x-16">
           {/* Logo - left aligned */}
           <div className="flex justify-start">
             {/* Ensure logo styling matches the rest of the site */}
@@ -52,8 +52,8 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex gap-8 justify-center nav-links">
+          {/* Desktop Navigation Links - Centered with increased spacing */}
+          <div className="hidden md:flex gap-10 justify-center nav-links mx-auto">
             <Link
               href="/services"
               className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
