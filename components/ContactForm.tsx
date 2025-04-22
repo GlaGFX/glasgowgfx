@@ -34,8 +34,21 @@ const ContactForm: React.FC = () => {
 
       if (response.ok) {
         // Assume success if status is 2xx
+        const responseText = await response.text(); // Get response as text first
         try {
-            const result = await response.json(); // Try parsing JSON
+            if (!responseText) {
+                // Handle empty response body
+                console.error('Received empty success response body. Status:', response.status);
+                setSubmitStatus('error');
+                // Provide a message indicating success but potentially missing confirmation details
+                setSubmitMessage('Submission likely succeeded, but confirmation details are missing.');
+                event.currentTarget.reset(); // Still reset form as email was likely sent
+                localStorage.setItem('formSubmitted', 'true'); // Assume success based on status
+                return; // Exit early
+            }
+
+            const result = JSON.parse(responseText); // Try parsing the text as JSON
+
             if (result.success) {
               setSubmitStatus('success');
               setSubmitMessage(result.message || 'Form submitted successfully! Email sent.');
@@ -49,10 +62,13 @@ const ContactForm: React.FC = () => {
             }
         } catch (parseError) {
             // Handle JSON parsing error specifically
-            console.error('Error parsing success response JSON:', parseError, 'Response Status:', response.status);
-             // Since the email is likely sent (status 200), provide a more informative message
+            console.error('Error parsing success response JSON:', parseError, 'Response Text:', responseText, 'Response Status:', response.status);
+            // Since the email is likely sent (status 200), provide a more informative message
             setSubmitStatus('error');
             setSubmitMessage('Submission likely succeeded, but the response format was unexpected.');
+            // Optionally, still treat as success visually if needed, but log the error
+             event.currentTarget.reset(); // Still reset form as email was likely sent
+             localStorage.setItem('formSubmitted', 'true'); // Assume success based on status
         }
       } else {
         // Handle non-2xx responses (4xx, 5xx)
