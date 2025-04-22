@@ -32,22 +32,50 @@ const ContactForm: React.FC = () => {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        setSubmitStatus('success');
-        setSubmitMessage('Form submitted successfully! Email sent.');
-        event.currentTarget.reset();
-        // Store successful submission in localStorage
-        localStorage.setItem('formSubmitted', 'true');
-      } else if (!response.ok) {
+      if (response.ok) {
+        // Assume success if status is 2xx
+        try {
+            const result = await response.json(); // Try parsing JSON
+            if (result.success) {
+              setSubmitStatus('success');
+              setSubmitMessage(result.message || 'Form submitted successfully! Email sent.');
+              event.currentTarget.reset();
+              localStorage.setItem('formSubmitted', 'true');
+            } else {
+              // Handle cases where response is OK but operation failed (e.g., API returns { success: false })
+              console.error('API indicated failure despite OK status:', result);
+              setSubmitStatus('error');
+              setSubmitMessage(result.message || 'Submission failed on the server.');
+            }
+        } catch (parseError) {
+            // Handle JSON parsing error specifically
+            console.error('Error parsing success response JSON:', parseError, 'Response Status:', response.status);
+             // Since the email is likely sent (status 200), provide a more informative message
+            setSubmitStatus('error');
+            setSubmitMessage('Submission likely succeeded, but the response format was unexpected.');
+        }
+      } else {
+        // Handle non-2xx responses (4xx, 5xx)
+        let errorMessage = `Server error: ${response.status}`;
+        try {
+            const result = await response.json(); // Try parsing error JSON
+            errorMessage = result.message || `Server responded with status ${response.status}`;
+        } catch (parseError) {
+            console.error('Error parsing error response JSON:', parseError, 'Response Status:', response.status);
+            errorMessage = `Server responded with status ${response.status}, but error details are unclear.`;
+        }
         setSubmitStatus('error');
-        setSubmitMessage(result.message || 'Error submitting form');
+        setSubmitMessage(errorMessage);
       }
-    } catch (error) {
-      console.error('Form submission error:', error);
+    } catch (fetchError) {
+      // Handle fetch errors (network issues, DNS errors, etc.)
+      console.error('Form submission fetch error:', fetchError);
       setSubmitStatus('error');
-      setSubmitMessage('An error occurred while submitting the form.');
+      let errorMessage = 'Network error during submission.';
+       if (fetchError instanceof Error) {
+        errorMessage += ` Details: ${fetchError.message}`;
+      }
+      setSubmitMessage(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
