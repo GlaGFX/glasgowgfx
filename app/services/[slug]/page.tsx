@@ -2,12 +2,7 @@ import { notFound } from 'next/navigation';
 import { services } from '@/data/services';
 import { motion } from 'framer-motion';
 import type { Metadata } from 'next';
-
-interface ServicePageProps {
-  params: { slug: string };
-}
-
-export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const service = services.find(s => s.id === params.slug);
   if (!service) return {};
   
@@ -17,7 +12,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   };
 }
 
-export default function ServicePage({ params }: ServicePageProps) {
+export default function ServicePage({ params }: { params: { slug: string } }) {
   const service = services.find(s => s.id === params.slug);
   if (!service) return notFound();
 
