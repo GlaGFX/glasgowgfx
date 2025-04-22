@@ -5,14 +5,15 @@ import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
 const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>(
-    localStorage.getItem('formSubmitted') ? 'success' : 'idle'
-  );
-  const [submitMessage, setSubmitMessage] = React.useState(
-    localStorage.getItem('formSubmitted')
-      ? 'Form submitted successfully! Email sent.'
-      : ''
-  );
+  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = React.useState('');
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && localStorage.getItem('formSubmitted')) {
+      setSubmitStatus('success');
+      setSubmitMessage('Form submitted successfully! Email sent.');
+    }
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
