@@ -3,8 +3,10 @@ import type { Metadata } from 'next';
 import { FiUsers, FiAward, FiClock, FiLayers } from 'react-icons/fi';
 import ServiceCard from '@/components/ServiceCard';
 import TeamMemberCard from '@/components/TeamMemberCard';
-import ProcessVisualization from '@/components/ProcessVisualization';
+// import ProcessVisualization from '@/components/ProcessVisualization'; // Remove static import
 import StarfieldBackground from '@/components/layout/StarfieldBackground';
+import DynamicProcessVisualization from '@/components/DynamicProcessVisualization'; // Import the new client component
+
 
 export const metadata: Metadata = {
   title: 'About Us | Glasgow GFX',
@@ -40,7 +42,7 @@ const AboutPage = () => {
       </section>
 
       {/* Our Process */}
-      <ProcessVisualization />
+      <DynamicProcessVisualization />
 
       {/* Core Values */}
       <section className="py-16">

@@ -48,16 +48,16 @@ const AboutPageContent = () => {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">Our Core Values</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <ServiceCard title="Collaboration" icon={<FiUsers className="text-2xl text-primary" aria-hidden="true" />}>
+            <ServiceCard title="Collaboration" icon={FiUsers}>
               We believe the best work comes from diverse perspectives working in harmony.
             </ServiceCard>
-            <ServiceCard title="Innovation" icon={<FiAward className="text-2xl text-primary" aria-hidden="true" />}>
+            <ServiceCard title="Innovation" icon={FiAward}>
               Constantly pushing boundaries to deliver cutting-edge solutions.
             </ServiceCard>
-            <ServiceCard title="Craftsmanship" icon={<FiLayers className="text-2xl text-primary" aria-hidden="true" />}>
+            <ServiceCard title="Craftsmanship" icon={FiLayers}>
               Meticulous attention to detail in every pixel and line of code.
             </ServiceCard>
-            <ServiceCard title="Integrity" icon={<FiClock className="text-2xl text-primary" aria-hidden="true" />}>
+            <ServiceCard title="Integrity" icon={FiClock}>
               Honest communication and ethical practices guide everything we do.
             </ServiceCard>
           </div>
