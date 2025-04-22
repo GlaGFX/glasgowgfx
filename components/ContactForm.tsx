@@ -17,79 +17,82 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget; // Store reference to the form
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    setSubmitMessage(''); // Clear previous message
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
+    let response: Response | null = null; // Variable to hold response
+
     try {
-      const response = await fetch('/api/contact', {
+      // --- Fetch Operation ---
+      response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
+      // --- Response Processing ---
       if (response.ok) {
-        // Assume success if status is 2xx
-        const responseText = await response.text(); // Get response as text first
+        const responseText = await response.text();
         try {
-            if (!responseText) {
-                // Handle empty response body
-                console.error('Received empty success response body. Status:', response.status);
-                setSubmitStatus('error');
-                // Provide a message indicating success but potentially missing confirmation details
-                setSubmitMessage('Submission likely succeeded, but confirmation details are missing.');
-                event.currentTarget.reset(); // Still reset form as email was likely sent
-                localStorage.setItem('formSubmitted', 'true'); // Assume success based on status
-                return; // Exit early
-            }
-
-            const result = JSON.parse(responseText); // Try parsing the text as JSON
-
+          if (!responseText) {
+            // Handle empty response body
+            console.warn('Received empty success response body. Status:', response.status);
+            setSubmitStatus('success'); // Treat as success since status is OK
+            setSubmitMessage('Form submitted successfully! (No confirmation details)');
+            if (form) form.reset(); // Check form exists before reset
+            localStorage.setItem('formSubmitted', 'true');
+          } else {
+            // Try parsing the non-empty text as JSON
+            const result = JSON.parse(responseText);
             if (result.success) {
               setSubmitStatus('success');
               setSubmitMessage(result.message || 'Form submitted successfully! Email sent.');
-              event.currentTarget.reset();
+              if (form) form.reset(); // Check form exists before reset
               localStorage.setItem('formSubmitted', 'true');
             } else {
-              // Handle cases where response is OK but operation failed (e.g., API returns { success: false })
+              // Handle cases where response is OK but API indicates failure
               console.error('API indicated failure despite OK status:', result);
               setSubmitStatus('error');
               setSubmitMessage(result.message || 'Submission failed on the server.');
             }
-        } catch (parseError) {
-            // Handle JSON parsing error specifically
-            console.error('Error parsing success response JSON:', parseError, 'Response Text:', responseText, 'Response Status:', response.status);
-            // Since the email is likely sent (status 200), provide a more informative message
-            setSubmitStatus('error');
-            setSubmitMessage('Submission likely succeeded, but the response format was unexpected.');
-            // Optionally, still treat as success visually if needed, but log the error
-             event.currentTarget.reset(); // Still reset form as email was likely sent
-             localStorage.setItem('formSubmitted', 'true'); // Assume success based on status
+          }
+        } catch (parseError) { // Catch JSON parsing errors specifically
+          console.error('Error parsing success response JSON:', parseError, 'Response Text:', responseText, 'Response Status:', response.status);
+          setSubmitStatus('error');
+          setSubmitMessage('Submission likely succeeded, but the response format was unexpected.');
+          if (form) form.reset(); // Check form exists - still reset as email likely sent
+          localStorage.setItem('formSubmitted', 'true'); // Assume success based on status
         }
-      } else {
-        // Handle non-2xx responses (4xx, 5xx)
+      } else { // Handle non-2xx responses (4xx, 5xx)
         let errorMessage = `Server error: ${response.status}`;
         try {
-            const result = await response.json(); // Try parsing error JSON
-            errorMessage = result.message || `Server responded with status ${response.status}`;
+          // Try parsing error response JSON
+          const errorResult = await response.json();
+          errorMessage = errorResult.message || `Server responded with status ${response.status}`;
         } catch (parseError) {
-            console.error('Error parsing error response JSON:', parseError, 'Response Status:', response.status);
-            errorMessage = `Server responded with status ${response.status}, but error details are unclear.`;
+          console.error('Error parsing error response JSON:', parseError, 'Response Status:', response.status);
+          errorMessage = `Server responded with status ${response.status}, but error details are unclear.`;
         }
         setSubmitStatus('error');
         setSubmitMessage(errorMessage);
       }
-    } catch (fetchError) {
-      // Handle fetch errors (network issues, DNS errors, etc.)
-      console.error('Form submission fetch error:', fetchError);
+
+    } catch (fetchError) { // Catch only genuine fetch/network errors
+      console.error('Form submission fetch/network error:', fetchError);
       setSubmitStatus('error');
       let errorMessage = 'Network error during submission.';
-       if (fetchError instanceof Error) {
+      // Add details only if it's a generic Error, avoiding the reset TypeError message here
+      if (fetchError instanceof Error && !(fetchError instanceof TypeError && fetchError.message.includes("reading 'reset'"))) {
         errorMessage += ` Details: ${fetchError.message}`;
+      } else if (fetchError instanceof TypeError && fetchError.message.includes("reading 'reset'")) {
+         // Log the reset error specifically if it somehow bubbles up here
+         console.error("Reset error caught unexpectedly in fetch catch block:", fetchError);
+         errorMessage = "An unexpected error occurred after submission attempt.";
       }
       setSubmitMessage(errorMessage);
     } finally {
