@@ -48,8 +48,16 @@ export interface Project {
   approach?: string; // Detail page only
   outcome?: string; // Detail page only
   imageUrl: string;
+  imageWidth: number;
+  imageHeight: number;
   coverImage?: string; // Detail page hero
-  images?: string[]; // Detail page gallery
+  coverImageWidth?: number;
+  coverImageHeight?: number;
+  images?: {
+    url: string;
+    width: number;
+    height: number;
+  }[]; // Detail page gallery
   color: string; // For gradient overlay
   // Reverted size type back to string to hold Tailwind classes
   size: string; // For Bento grid layout (Tailwind classes)

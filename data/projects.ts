@@ -1,6 +1,5 @@
 import type { Project } from '@/types';
 
-// Centralized project data
 export const projects: Project[] = [
   {
     id: 1,
@@ -14,12 +13,19 @@ export const projects: Project[] = [
     approach: "We conducted extensive user research with diverse user groups to identify pain points in the existing platform. Our design process emphasized inclusive design principles, with multiple iterations and usability testing at each stage.",
     outcome: "The redesigned platform saw a 42% increase in user satisfaction scores, 27% reduction in support tickets, and a 35% improvement in task completion rates. The new design was successfully implemented across web and mobile applications.",
     imageUrl: "/Images/harmoney-finance.png",
+    imageWidth: 1200,
+    imageHeight: 800,
     coverImage: "/Images/harmoney-finance.png",
+    coverImageWidth: 1920,
+    coverImageHeight: 1080,
     images: [
-      "/Images/harmoney-finance.png"
+      {
+        url: "/Images/harmoney-finance.png",
+        width: 1200,
+      }
     ],
     color: "from-violet-500 to-purple-500",
-    size: "md:col-span-2 md:row-span-2 col-span-1 row-span-1", // Large anchor
+    size: "md:col-span-2 md:row-span-2 col-span-1 row-span-1",
     slug: "harmony-finance"
   },
   {
@@ -34,14 +40,30 @@ export const projects: Project[] = [
     approach: "We began with extensive market research and stakeholder interviews to understand the company's vision and competitive landscape. This informed our strategic positioning and visual direction, which we refined through collaborative workshops.",
     outcome: "The resulting brand identity has been successfully implemented across all touchpoints. The client reported a 40% increase in investor interest and positive feedback from early user testing groups on the brand's trustworthiness and approachability.",
     imageUrl: "/api/placeholder/400/500?text=Lumina+Health",
+    imageWidth: 400,
+    imageHeight: 500,
     coverImage: "/api/placeholder/1920/1080?text=Lumina+Health+Cover",
+    coverImageWidth: 1920,
+    coverImageHeight: 1080,
     images: [
-      "/api/placeholder/1200/800?text=Lumina+Health+1",
-      "/api/placeholder/800/1200?text=Lumina+Health+2",
-      "/api/placeholder/1200/800?text=Lumina+Health+3",
+      {
+        url: "/api/placeholder/1200/800?text=Lumina+Health+1",
+        width: 1200,
+        height: 800
+      },
+      {
+        url: "/api/placeholder/800/1200?text=Lumina+Health+2",
+        width: 800,
+        height: 1200
+      },
+      {
+        url: "/api/placeholder/1200/800?text=Lumina+Health+3",
+        width: 1200,
+        height: 800
+      }
     ],
     color: "from-blue-500 to-cyan-500",
-    size: "md:col-span-1 md:row-span-1 col-span-1 row-span-1", // Standard
+    size: "md:col-span-1 md:row-span-1 col-span-1 row-span-1",
     slug: "lumina-health"
   },
   {
@@ -49,7 +71,6 @@ export const projects: Project[] = [
     title: "Scope Project Management",
     category: "Web Application",
     description: "An intuitive project management tool for creative teams.",
-    // Add detailed fields if available, otherwise use placeholders or omit
     client: "Scope Solutions",
     date: "February 2025",
     services: ["Full-stack Development", "API Integration", "UI Design"],
@@ -57,10 +78,20 @@ export const projects: Project[] = [
     approach: "Agile development with continuous feedback from target users.",
     outcome: "Successful launch with positive adoption rates.",
     imageUrl: "/api/placeholder/800/300?text=Scope+PM",
+    imageWidth: 800,
+    imageHeight: 300,
     coverImage: "/api/placeholder/1920/1080?text=Scope+PM+Cover",
-    images: ["/api/placeholder/1200/800?text=Scope+PM+1"],
+    coverImageWidth: 1920,
+    coverImageHeight: 1080,
+    images: [
+      {
+        url: "/api/placeholder/1200/800?text=Scope+PM+1",
+        width: 1200,
+        height: 800
+      }
+    ],
     color: "from-emerald-500 to-teal-500",
-    size: "md:col-span-1 md:row-span-2 col-span-1 row-span-1", // Tall
+    size: "md:col-span-1 md:row-span-2 col-span-1 row-span-1",
     slug: "scope-project-management"
   },
   {
@@ -75,10 +106,20 @@ export const projects: Project[] = [
     approach: "User-centered design focusing on clarity and ease of use in challenging environments.",
     outcome: "Highly rated prototype, pending development.",
     imageUrl: "/api/placeholder/500/300?text=Atlas+Travel+App",
+    imageWidth: 500,
+    imageHeight: 300,
     coverImage: "/api/placeholder/1920/1080?text=Atlas+Travel+Cover",
-    images: ["/api/placeholder/800/1200?text=Atlas+Travel+1"],
+    coverImageWidth: 1920,
+    coverImageHeight: 1080,
+    images: [
+      {
+        url: "/api/placeholder/800/1200?text=Atlas+Travel+1",
+        width: 800,
+        height: 1200
+      }
+    ],
     color: "from-amber-500 to-orange-500",
-    size: "md:col-span-1 md:row-span-1 col-span-1 row-span-1", // Standard item
+    size: "md:col-span-1 md:row-span-1 col-span-1 row-span-1",
     slug: "atlas-travel-app"
   },
   {
@@ -93,10 +134,20 @@ export const projects: Project[] = [
     approach: "Iterative design process focusing on clear visual hierarchy and interactive elements.",
     outcome: "Improved data accessibility and decision-making speed for the client.",
     imageUrl: "/api/placeholder/500/600?text=Quantum+Analytics",
+    imageWidth: 500,
+    imageHeight: 600,
     coverImage: "/api/placeholder/1920/1080?text=Quantum+Analytics+Cover",
-    images: ["/api/placeholder/1200/800?text=Quantum+Analytics+1"],
+    coverImageWidth: 1920,
+    coverImageHeight: 1080,
+    images: [
+      {
+        url: "/api/placeholder/1200/800?text=Quantum+Analytics+1",
+        width: 1200,
+        height: 800
+      }
+    ],
     color: "from-fuchsia-500 to-pink-500",
-    size: "md:col-span-1 md:row-span-2 col-span-1 row-span-1", // Tall
+    size: "md:col-span-1 md:row-span-2 col-span-1 row-span-1",
     slug: "quantum-analytics"
   },
   {
@@ -111,10 +162,20 @@ export const projects: Project[] = [
     approach: "Utilized WebGL and creative coding techniques for dynamic visualizations.",
     outcome: "Award-winning platform praised for its innovative user interface.",
     imageUrl: "/api/placeholder/800/300?text=EchoWave+Music",
+    imageWidth: 800,
+    imageHeight: 300,
     coverImage: "/api/placeholder/1920/1080?text=EchoWave+Cover",
-    images: ["/api/placeholder/1200/800?text=EchoWave+1"],
+    coverImageWidth: 1920,
+    coverImageHeight: 1080,
+    images: [
+      {
+        url: "/api/placeholder/1200/800?text=EchoWave+1",
+        width: 1200,
+        height: 800
+      }
+    ],
     color: "from-indigo-500 to-purple-500",
-    size: "md:col-span-2 md:row-span-1 col-span-1 row-span-1", // Wide
+    size: "md:col-span-2 md:row-span-1 col-span-1 row-span-1",
     slug: "echowave-music"
   },
   {
@@ -129,10 +190,20 @@ export const projects: Project[] = [
     approach: "Developed a custom solution using modern web technologies and best practices.",
     outcome: "Successful launch with strong initial sales and positive customer feedback.",
     imageUrl: "/api/placeholder/400/500?text=Verdant+E-commerce",
+    imageWidth: 400,
+    imageHeight: 500,
     coverImage: "/api/placeholder/1920/1080?text=Verdant+Cover",
-    images: ["/api/placeholder/1200/800?text=Verdant+1"],
+    coverImageWidth: 1920,
+    coverImageHeight: 1080,
+    images: [
+      {
+        url: "/api/placeholder/1200/800?text=Verdant+1",
+        width: 1200,
+        height: 800
+      }
+    ],
     color: "from-green-500 to-emerald-500",
-    size: "md:col-span-2 md:row-span-1 col-span-1 row-span-1", // Wide
+    size: "md:col-span-2 md:row-span-1 col-span-1 row-span-1",
     slug: "verdant-ecommerce"
   },
   {
@@ -147,13 +218,22 @@ export const projects: Project[] = [
     approach: "Native development for optimal performance combined with a robust backend.",
     outcome: "App launched successfully on both platforms, achieving high user engagement.",
     imageUrl: "/api/placeholder/800/500?text=Pulse+Fitness",
+    imageWidth: 800,
+    imageHeight: 500,
     coverImage: "/api/placeholder/1920/1080?text=Pulse+Fitness+Cover",
-    images: ["/api/placeholder/800/1200?text=Pulse+Fitness+1"],
+    coverImageWidth: 1920,
+    coverImageHeight: 1080,
+    images: [
+      {
+        url: "/api/placeholder/800/1200?text=Pulse+Fitness+1",
+        width: 800,
+        height: 1200
+      }
+    ],
     color: "from-red-500 to-rose-500",
-    size: "md:col-span-2 md:row-span-2 col-span-1 row-span-1", // Large
+    size: "md:col-span-2 md:row-span-2 col-span-1 row-span-1",
     slug: "pulse-fitness"
   }
 ];
 
-// Derive unique categories
 export const categories = [...new Set(projects.map(project => project.category))];

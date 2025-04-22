@@ -42,10 +42,12 @@ const Footer = () => {
           <div className="footer-links">
             <h4 className="text-lg font-bold mb-5 md:mb-6">Connect</h4>
             <ul className="list-none flex flex-col gap-3">
-              <li><a href="#" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Twitter</a></li>
-              <li><a href="#" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Instagram</a></li>
-              <li><a href="#" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Dribbble</a></li>
+              <li><a href="https://x.com/GlaGFX" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Twitter</a></li>
+              <li><a href="https://www.instagram.com/glasgow_gfx/" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Instagram</a></li>
+              <li><a href="https://dribbble.com/GlasgowGFX/shots" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Dribbble</a></li>
+              <li><a href="https://github.com/GlaGFX" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">GitHub</a></li>
               <li><a href="#" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">LinkedIn</a></li>
+              <li><a href="https://pinterest.com/Glasgow_gfx/" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Pinterest</a></li>
             </ul>
           </div>
         </div>
