@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FeatureCard } from '@/components/FeatureCard';
 import { ProjectCard } from '@/components/ProjectCard';
 import { projects } from '@/data/projects';
@@ -39,13 +39,20 @@ export default function Home() {
     };
   }, []);
 
+  const { scrollYProgress } = useScroll();
+  // Transform scroll progress (0 to 1) into scale (1 down to 0.6) and blur (0px to 4px)
+  // The effect will be fully applied when the user scrolls 30% of the page height.
+  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.6]); // Increased scaling intensity
+  const filter = useTransform(scrollYProgress, [0, 0.3], ['blur(0px)', 'blur(4px)']); // Increased blur intensity
+
   return (
     <main className="relative">
       {/* Hero Section */}
       <section className="hero relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <motion.div 
+          <motion.div
             className="hero-content flex flex-col items-center gap-8 text-center"
+            style={{ scale, filter }} // Apply scroll-based scale and blur
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}

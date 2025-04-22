@@ -22,6 +22,7 @@ export const projects: Project[] = [
       {
         url: "/Images/harmoney-finance.png",
         width: 1200,
+        height: 800
       }
     ],
     color: "from-violet-500 to-purple-500",
