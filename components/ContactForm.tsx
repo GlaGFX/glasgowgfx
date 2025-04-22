@@ -27,13 +27,17 @@ const ContactForm: React.FC = () => {
 
       const result = await response.json();
 
-      if (response.ok) {
+      if (response.ok && result.success) {
         setSubmitStatus('success');
         setSubmitMessage('Form submitted successfully! Email sent.');
         event.currentTarget.reset();
       } else {
         setSubmitStatus('error');
-        setSubmitMessage(result.message || 'Error submitting form');
+        setSubmitMessage(
+          response.ok
+            ? 'Email sent but there was an issue processing your submission'
+            : result.message || 'Error submitting form'
+        );
       }
     } catch (error) {
       console.error('Form submission error:', error);
