@@ -8,6 +8,36 @@ export const metadata: Metadata = {
 };
 
 const ContactPage = () => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message); // Or display a more user-friendly success message
+        // Optionally clear the form
+        event.currentTarget.reset();
+      } else {
+        alert(`Error: ${result.message}`); // Or display a more user-friendly error message
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('An error occurred while submitting the form.'); // Generic error message
+    }
+  };
+
   return (
     <div className="relative">
       {/* Hero Section */}
@@ -53,7 +83,7 @@ const ContactPage = () => {
           {/* Contact Form Placeholder */}
           <div>
             <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Name</label>
                 <input type="text" id="name" name="name" className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="Your Name" />
