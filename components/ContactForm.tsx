@@ -3,9 +3,15 @@
 import React from 'react';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
-const ContactForm = () => {
+const ContactForm: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = React.useState('');
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
 
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
@@ -22,14 +28,19 @@ const ContactForm = () => {
       const result = await response.json();
 
       if (response.ok) {
-        alert(result.message);
+        setSubmitStatus('success');
+        setSubmitMessage('Form submitted successfully! Email sent.');
         event.currentTarget.reset();
       } else {
-        alert(`Error: ${result.message}`);
+        setSubmitStatus('error');
+        setSubmitMessage(result.message || 'Error submitting form');
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      alert('An error occurred while submitting the form.');
+      setSubmitStatus('error');
+      setSubmitMessage('An error occurred while submitting the form.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -80,9 +91,19 @@ const ContactForm = () => {
             <textarea id="message" name="message" rows={4} className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="How can we help?"></textarea>
           </div>
           <div>
-            <button type="submit" className="px-6 py-3 bg-primary text-white font-semibold rounded-md hover:bg-primary-dark transition duration-300">
-              Send Message
+            <button 
+              type="submit" 
+              className="px-6 py-3 bg-primary text-white font-semibold rounded-md hover:bg-primary-dark transition duration-300 disabled:opacity-50"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
+            {submitStatus === 'success' && (
+              <p className="mt-4 text-green-500">{submitMessage}</p>
+            )}
+            {submitStatus === 'error' && (
+              <p className="mt-4 text-red-500">{submitMessage}</p>
+            )}
           </div>
         </form>
       </div>
