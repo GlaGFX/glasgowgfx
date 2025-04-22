@@ -65,7 +65,7 @@ const AboutPageContent = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 max-w-6xl mx-auto px-6">
+      <section id="team-section" className="py-16 max-w-6xl mx-auto px-6 scroll-mt-[100px]">
         <h2 className="text-3xl font-bold mb-12 text-center">Meet Our Team</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <TeamMemberCard

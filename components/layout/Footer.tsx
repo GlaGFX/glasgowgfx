@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 
@@ -32,7 +34,23 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-5 md:mb-6">Company</h4>
             <ul className="list-none flex flex-col gap-3">
               <li><Link href="/about" className="text-gray no-underline transition-colors duration-300 hover:text-light">About Us</Link></li>
-              <li><a href="#" className="text-gray no-underline transition-colors duration-300 hover:text-light">Our Team</a></li>
+              <li>
+                <Link
+                  href="/about#team-section"
+                  className="text-gray no-underline transition-colors duration-300 hover:text-light"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const teamSection = document.getElementById('team-section');
+                    if (teamSection) {
+                      teamSection.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                      window.location.href = '/about#team-section';
+                    }
+                  }}
+                >
+                  Our Team
+                </Link>
+              </li>
               <li><a href="#" className="text-gray no-underline transition-colors duration-300 hover:text-light">Careers</a></li>
               <li><Link href="/contact" className="text-gray no-underline transition-colors duration-300 hover:text-light">Contact</Link></li>
             </ul>
