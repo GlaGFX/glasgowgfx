@@ -1,12 +1,18 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
 const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
-  const [submitMessage, setSubmitMessage] = React.useState('');
+  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>(
+    localStorage.getItem('formSubmitted') ? 'success' : 'idle'
+  );
+  const [submitMessage, setSubmitMessage] = React.useState(
+    localStorage.getItem('formSubmitted')
+      ? 'Form submitted successfully! Email sent.'
+      : ''
+  );
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,13 +37,11 @@ const ContactForm: React.FC = () => {
         setSubmitStatus('success');
         setSubmitMessage('Form submitted successfully! Email sent.');
         event.currentTarget.reset();
-      } else {
+        // Store successful submission in localStorage
+        localStorage.setItem('formSubmitted', 'true');
+      } else if (!response.ok) {
         setSubmitStatus('error');
-        setSubmitMessage(
-          response.ok
-            ? 'Email sent but there was an issue processing your submission'
-            : result.message || 'Error submitting form'
-        );
+        setSubmitMessage(result.message || 'Error submitting form');
       }
     } catch (error) {
       console.error('Form submission error:', error);
