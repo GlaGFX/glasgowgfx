@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@sendgrid/mail": "^8.1.5",
     "framer-motion": "^12.7.4",
     "next": "^15.2.4",
     "nodemailer": "^6.10.1",

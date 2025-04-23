@@ -5,13 +5,17 @@ import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
 const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
-  const [submitMessage, setSubmitMessage] = React.useState('');
+  const [submitMessage, setSubmitMessage] = React.useState<{
+    message: string | null;
+    success: boolean;
+  }>({ message: null, success: false });
 
   React.useEffect(() => {
     if (typeof window !== 'undefined' && localStorage.getItem('formSubmitted')) {
-      setSubmitStatus('success');
-      setSubmitMessage('Form submitted successfully! Email sent.');
+      setSubmitMessage({
+        message: 'Message received! Our creative team will review it and get back to you shortly.',
+        success: true
+      });
     }
   }, []);
 
@@ -19,8 +23,7 @@ const ContactForm: React.FC = () => {
     event.preventDefault();
     const form = event.currentTarget; // Store reference to the form
     setIsSubmitting(true);
-    setSubmitStatus('idle');
-    setSubmitMessage(''); // Clear previous message
+    setSubmitMessage({ message: null, success: false }); // Clear previous message
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
@@ -42,29 +45,37 @@ const ContactForm: React.FC = () => {
           if (!responseText) {
             // Handle empty response body
             console.warn('Received empty success response body. Status:', response.status);
-            setSubmitStatus('success'); // Treat as success since status is OK
-            setSubmitMessage('Form submitted successfully! (No confirmation details)');
+            setSubmitMessage({
+              message: 'Form submitted successfully! (No confirmation details)',
+              success: true
+            });
             if (form) form.reset(); // Check form exists before reset
             localStorage.setItem('formSubmitted', 'true');
           } else {
             // Try parsing the non-empty text as JSON
             const result = JSON.parse(responseText);
             if (result.success) {
-              setSubmitStatus('success');
-              setSubmitMessage(result.message || 'Form submitted successfully! Email sent.');
+              setSubmitMessage({
+                message: result.message || 'Message received! Our creative team will review it and get back to you shortly.',
+                success: result.success
+              });
               if (form) form.reset(); // Check form exists before reset
               localStorage.setItem('formSubmitted', 'true');
             } else {
               // Handle cases where response is OK but API indicates failure
               console.error('API indicated failure despite OK status:', result);
-              setSubmitStatus('error');
-              setSubmitMessage(result.message || 'Submission failed on the server.');
+              setSubmitMessage({
+                message: result.message || 'Submission failed on the server.',
+                success: false
+              });
             }
           }
         } catch (parseError) { // Catch JSON parsing errors specifically
           console.error('Error parsing success response JSON:', parseError, 'Response Text:', responseText, 'Response Status:', response.status);
-          setSubmitStatus('error');
-          setSubmitMessage('Submission likely succeeded, but the response format was unexpected.');
+          setSubmitMessage({
+            message: 'Submission likely succeeded, but the response format was unexpected.',
+            success: true
+          });
           if (form) form.reset(); // Check form exists - still reset as email likely sent
           localStorage.setItem('formSubmitted', 'true'); // Assume success based on status
         }
@@ -78,13 +89,14 @@ const ContactForm: React.FC = () => {
           console.error('Error parsing error response JSON:', parseError, 'Response Status:', response.status);
           errorMessage = `Server responded with status ${response.status}, but error details are unclear.`;
         }
-        setSubmitStatus('error');
-        setSubmitMessage(errorMessage);
+        setSubmitMessage({
+          message: errorMessage,
+          success: false
+        });
       }
 
     } catch (fetchError) { // Catch only genuine fetch/network errors
       console.error('Form submission fetch/network error:', fetchError);
-      setSubmitStatus('error');
       let errorMessage = 'Network error during submission.';
       // Add details only if it's a generic Error, avoiding the reset TypeError message here
       if (fetchError instanceof Error && !(fetchError instanceof TypeError && fetchError.message.includes("reading 'reset'"))) {
@@ -94,7 +106,10 @@ const ContactForm: React.FC = () => {
          console.error("Reset error caught unexpectedly in fetch catch block:", fetchError);
          errorMessage = "An unexpected error occurred after submission attempt.";
       }
-      setSubmitMessage(errorMessage);
+      setSubmitMessage({
+        message: errorMessage,
+        success: false
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -154,11 +169,10 @@ const ContactForm: React.FC = () => {
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
-            {submitStatus === 'success' && (
-              <p className="mt-4 text-green-500">{submitMessage}</p>
-            )}
-            {submitStatus === 'error' && (
-              <p className="mt-4 text-red-500">{submitMessage}</p>
+            {submitMessage.message && (
+              <p className={`mt-4 ${submitMessage.success ? 'text-primary' : 'text-red-500'}`}>
+                {submitMessage.message}
+              </p>
             )}
           </div>
         </form>

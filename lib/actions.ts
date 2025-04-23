@@ -1,7 +1,7 @@
 'use server';
 
 import { z } from 'zod';
-import sgMail from '@sendgrid/mail'; // Import SendGrid
+
 
 // Define a schema for the form data using Zod
 const ContactFormSchema = z.object({
@@ -52,50 +52,9 @@ export async function sendContactMessage(
   console.log("Project Type:", projectType || "N/A");
   console.log("Message:", message);
 
-  // --- SendGrid Email Logic ---
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY || ''); // Ensure API key is set in .env.local
-
-  const recipientEmail = 'contact@glasgowgfx.com';
-  // IMPORTANT: Replace with your verified SendGrid sender email address
-  const fromEmail = 'noreply@yourdomain.com';
-
-  const msg = {
-    to: recipientEmail,
-    from: fromEmail, // Use the verified sender
-    subject: `New Contact Form Submission from ${name}`,
-    text: `
-      Name: ${name}
-      Email: ${email}
-      Project Type: ${projectType || 'N/A'}
-      Message: ${message}
-    `,
-    html: `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Project Type:</strong> ${projectType || 'N/A'}</p>
-      <p><strong>Message:</strong></p>
-      <p>${message.replace(/\n/g, '<br>')}</p>
-    `,
+  // Return success since we're just validating for now
+  return {
+    message: "Form validated successfully. Email sending is handled by the API route.",
+    success: true,
   };
-
-  try {
-    await sgMail.send(msg);
-    console.log('Email sent successfully via SendGrid');
-    return {
-      message: "Your message has been sent successfully! We'll be in touch soon.",
-      success: true,
-    };
-  } catch (error: any) {
-    console.error('SendGrid Error:', error);
-    // Log more details if available
-    if (error.response) {
-      console.error(error.response.body)
-    }
-    return {
-      message: "Failed to send message due to a server error. Please try again later.",
-      success: false,
-    };
-  }
-  // --- End SendGrid Email Logic ---
 }
