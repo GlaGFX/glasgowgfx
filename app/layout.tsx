@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import StarfieldBackground from '@/components/layout/StarfieldBackground';
 import PageTransitionWrapper from '@/components/layout/PageTransitionWrapper';
+import Script from 'next/script';
 
 export const viewport = {
   width: 'device-width',
@@ -27,28 +28,39 @@ export async function generateMetadata(
 
   // Core metadata values
   const title = {
-    default: "Nexus • Design Collective",
-    template: "%s | Nexus"
+    default: "Glasgow GFX | Professional Graphic Design Services",
+    template: "%s | Glasgow GFX"
   }
-  const description = "A collective of designers, developers, and strategists passionate about creating meaningful digital products"
+  const description = "Expert graphic design services including logo design, brand identity, print design, digital graphics, UI/UX design, and marketing materials. Based in Glasgow, serving clients worldwide."
+  const keywords = [
+    "graphic design",
+    "logo design",
+    "brand identity",
+    "print design",
+    "digital graphics",
+    "UI/UX design",
+    "marketing materials",
+    "Glasgow designer",
+    "visual identity",
+    "packaging design"
+  ]
 
   // Open Graph configuration
   const openGraph = {
     title: title.default,
     description,
     url: new URL(SITE_URL),
-    siteName: "Nexus",
+    siteName: "Glasgow GFX",
     images: [{
       url: OG_IMAGE_URL,
       width: 1200,
       height: 630,
-      alt: "Nexus Design Collective",
+      alt: "Glasgow GFX - Professional Graphic Design Services",
     }],
     locale: "en_US",
     type: "website",
   }
 
-  // Twitter Card configuration
   // Twitter Card configuration
   const twitter = {
     card: "summary_large_image" as const,
@@ -56,7 +68,7 @@ export async function generateMetadata(
     description,
     images: [{
       url: OG_IMAGE_URL.toString(),
-      alt: "Nexus Design Collective"
+      alt: "Glasgow GFX - Professional Graphic Design Services"
     }],
     creator: "@glasgowgfx"
   }
@@ -65,6 +77,7 @@ export async function generateMetadata(
   return {
     title,
     description,
+    keywords,
     metadataBase: new URL(SITE_URL),
     openGraph,
     twitter,
@@ -95,6 +108,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Google Analytics Script */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased">
         <ThemeProvider>
           {/* Starfield background component */}
