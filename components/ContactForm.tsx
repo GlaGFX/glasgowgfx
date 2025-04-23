@@ -10,15 +10,6 @@ const ContactForm: React.FC = () => {
     success: boolean;
   }>({ message: null, success: false });
 
-  React.useEffect(() => {
-    if (typeof window !== 'undefined' && localStorage.getItem('formSubmitted')) {
-      setSubmitMessage({
-        message: 'Message received! Our creative team will review it and get back to you shortly.',
-        success: true
-      });
-    }
-  }, []);
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget; // Store reference to the form
@@ -49,8 +40,7 @@ const ContactForm: React.FC = () => {
               message: 'Form submitted successfully! (No confirmation details)',
               success: true
             });
-            if (form) form.reset(); // Check form exists before reset
-            localStorage.setItem('formSubmitted', 'true');
+            if (form) form.reset();
           } else {
             // Try parsing the non-empty text as JSON
             const result = JSON.parse(responseText);
@@ -59,8 +49,7 @@ const ContactForm: React.FC = () => {
                 message: result.message || 'Message received! Our creative team will review it and get back to you shortly.',
                 success: result.success
               });
-              if (form) form.reset(); // Check form exists before reset
-              localStorage.setItem('formSubmitted', 'true');
+              if (form) form.reset();
             } else {
               // Handle cases where response is OK but API indicates failure
               console.error('API indicated failure despite OK status:', result);
@@ -76,8 +65,7 @@ const ContactForm: React.FC = () => {
             message: 'Submission likely succeeded, but the response format was unexpected.',
             success: true
           });
-          if (form) form.reset(); // Check form exists - still reset as email likely sent
-          localStorage.setItem('formSubmitted', 'true'); // Assume success based on status
+          if (form) form.reset();
         }
       } else { // Handle non-2xx responses (4xx, 5xx)
         let errorMessage = `Server error: ${response.status}`;

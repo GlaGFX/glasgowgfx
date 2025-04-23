@@ -8,9 +8,37 @@ import StarfieldBackground from '@/components/layout/StarfieldBackground';
 import DynamicProcessVisualization from '@/components/DynamicProcessVisualization'; // Import the new client component
 
 
+const SITE_URL = 'https://glasgowgfx.com';
+const OG_IMAGE_URL = new URL('/og-image.png', SITE_URL);
+
 export const metadata: Metadata = {
-  title: 'About Us | Glasgow GFX',
-  description: 'Learn about our team, values and creative process at Glasgow GFX design studio.',
+  title: 'About Us | Nexus',
+  description: 'Learn about our team, values, and creative process - a collective passionate about crafting exceptional digital experiences that drive results.',
+  openGraph: {
+    title: 'About Us | Nexus',
+    description: 'Learn about our team, values, and creative process - a collective passionate about crafting exceptional digital experiences that drive results.',
+    url: new URL('/about', SITE_URL),
+    siteName: "Nexus",
+    images: [{
+      url: OG_IMAGE_URL,
+      width: 1200,
+      height: 630,
+      alt: "Nexus Design Collective - About Our Team and Process",
+    }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: 'About Us | Nexus',
+    description: 'Learn about our team, values, and creative process - a collective passionate about crafting exceptional digital experiences that drive results.',
+    images: [{
+      url: OG_IMAGE_URL.toString(),
+      alt: "Nexus Design Collective - About Our Team and Process"
+    }],
+    creator: "@glasgowgfx"
+  },
+  metadataBase: new URL(SITE_URL)
 };
 
 const AboutPage = () => {

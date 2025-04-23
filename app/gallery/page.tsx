@@ -2,6 +2,40 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { projects } from '@/data/projects'; // Import project data
+import type { Metadata } from 'next';
+
+const SITE_URL = 'https://glasgowgfx.com';
+const OG_IMAGE_URL = new URL('/og-image.png', SITE_URL);
+
+export const metadata: Metadata = {
+  title: 'Gallery | Nexus',
+  description: 'Explore our visual portfolio showcasing our best design and development work across various industries and project types.',
+  openGraph: {
+    title: 'Gallery | Nexus',
+    description: 'Explore our visual portfolio showcasing our best design and development work across various industries and project types.',
+    url: new URL('/gallery', SITE_URL),
+    siteName: "Nexus",
+    images: [{
+      url: OG_IMAGE_URL,
+      width: 1200,
+      height: 630,
+      alt: "Nexus Design Collective - Our Work Gallery",
+    }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: 'Gallery | Nexus',
+    description: 'Explore our visual portfolio showcasing our best design and development work across various industries and project types.',
+    images: [{
+      url: OG_IMAGE_URL.toString(),
+      alt: "Nexus Design Collective - Our Work Gallery"
+    }],
+    creator: "@glasgowgfx"
+  },
+  metadataBase: new URL(SITE_URL)
+};
 
 const GalleryPage = () => {
   return (

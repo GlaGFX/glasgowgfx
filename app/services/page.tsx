@@ -4,9 +4,37 @@ import Link from 'next/link';
 import ServiceCard from '@/components/ServiceCard';
 import { FiPenTool, FiCode, FiUsers } from 'react-icons/fi';
 
+const SITE_URL = 'https://glasgowgfx.com';
+const OG_IMAGE_URL = new URL('/og-image.png', SITE_URL);
+
 export const metadata: Metadata = {
-  title: 'Our Services | Glasgow GFX',
-  description: 'Explore the professional design and development services offered by Glasgow GFX..',
+  title: 'Services | Nexus',
+  description: 'Comprehensive design and development services including UI/UX, web apps, mobile apps, and brand identity - tailored solutions that drive business growth.',
+  openGraph: {
+    title: 'Services | Nexus',
+    description: 'Comprehensive design and development services including UI/UX, web apps, mobile apps, and brand identity - tailored solutions that drive business growth.',
+    url: new URL('/services', SITE_URL),
+    siteName: "Nexus",
+    images: [{
+      url: OG_IMAGE_URL,
+      width: 1200,
+      height: 630,
+      alt: "Nexus - Our Design and Development Services",
+    }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: 'Services | Nexus',
+    description: 'Comprehensive design and development services including UI/UX, web apps, mobile apps, and brand identity - tailored solutions that drive business growth.',
+    images: [{
+      url: OG_IMAGE_URL.toString(),
+      alt: "Nexus - Our Design and Development Services"
+    }],
+    creator: "@glasgowgfx"
+  },
+  metadataBase: new URL(SITE_URL)
 };
 
 type ServiceCardProps = {

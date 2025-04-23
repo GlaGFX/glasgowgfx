@@ -1,9 +1,37 @@
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 
+const SITE_URL = 'https://glasgowgfx.com';
+const OG_IMAGE_URL = new URL('/og-image.png', SITE_URL);
+
 export const metadata: Metadata = {
-  title: 'Contact Us | Glasgow GFX',
-  description: 'Get in touch with Glasgow GFX. We\'d love to hear about your project.',
+  title: 'Contact | Nexus',
+  description: 'Ready to start your project? Contact our team today for a free consultation and let\'s create something amazing together.',
+  openGraph: {
+    title: 'Contact | Nexus',
+    description: 'Ready to start your project? Contact our team today for a free consultation and let\'s create something amazing together.',
+    url: new URL('/contact', SITE_URL),
+    siteName: "Nexus",
+    images: [{
+      url: OG_IMAGE_URL,
+      width: 1200,
+      height: 630,
+      alt: "Nexus - Contact Our Design Team",
+    }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: 'Contact | Nexus',
+    description: 'Ready to start your project? Contact our team today for a free consultation and let\'s create something amazing together.',
+    images: [{
+      url: OG_IMAGE_URL.toString(),
+      alt: "Nexus - Contact Our Design Team"
+    }],
+    creator: "@glasgowgfx"
+  },
+  metadataBase: new URL(SITE_URL)
 };
 
 const ContactPage = () => {
