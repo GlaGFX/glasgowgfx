@@ -38,30 +38,49 @@ export default function PortfolioPage() {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          <button
-            onClick={() => setActiveCategory('All')}
-            className={`px-6 py-2 rounded-full border transition-colors ${
-              activeCategory === 'All'
-                ? 'bg-primary/90 border-primary text-white' // Slightly reduced opacity
-                : 'bg-gray-100/80 dark:bg-gray-800/80 border-gray-300/80 dark:border-gray-700/80 text-gray-700/90 dark:text-gray-300/90 hover:bg-gray-200/80 dark:hover:bg-gray-700/80' // Reduced opacity
-            }`}
-          >
-            All
-          </button>
-          {categories.map((category) => (
+        <div className="mb-16">
+          {/* Mobile Dropdown */}
+          <div className="md:hidden mb-4">
+            <select
+              value={activeCategory}
+              onChange={(e) => setActiveCategory(e.target.value)}
+              className="w-full px-4 py-2 rounded-full border border-gray-300/80 dark:border-gray-700/80 bg-gray-100/80 dark:bg-gray-800/80 text-gray-700/90 dark:text-gray-300/90"
+            >
+              <option value="All">All Categories</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Desktop Buttons */}
+          <div className="hidden md:flex flex-wrap justify-center gap-4">
             <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => setActiveCategory('All')}
               className={`px-6 py-2 rounded-full border transition-colors ${
-                activeCategory === category
-                  ? 'bg-primary/15 dark:bg-primary/25 border-primary/40 text-primary/90 dark:text-primary-light/90' // Reduced opacity
-                  : 'bg-gray-100/80 dark:bg-gray-800/80 border-gray-300/80 dark:border-gray-700/80 text-gray-700/90 dark:text-gray-300/90 hover:bg-gray-200/80 dark:hover:bg-gray-700/80' // Reduced opacity
+                activeCategory === 'All'
+                  ? 'bg-primary/90 border-primary text-white'
+                  : 'bg-gray-100/80 dark:bg-gray-800/80 border-gray-300/80 dark:border-gray-700/80 text-gray-700/90 dark:text-gray-300/90 hover:bg-gray-200/80 dark:hover:bg-gray-700/80'
               }`}
             >
-              {category}
+              All
             </button>
-          ))}
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-6 py-2 rounded-full border transition-colors ${
+                  activeCategory === category
+                    ? 'bg-primary/15 dark:bg-primary/25 border-primary/40 text-primary/90 dark:text-primary-light/90'
+                    : 'bg-gray-100/80 dark:bg-gray-800/80 border-gray-300/80 dark:border-gray-700/80 text-gray-700/90 dark:text-gray-300/90 hover:bg-gray-200/80 dark:hover:bg-gray-700/80'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Project Grid */}
