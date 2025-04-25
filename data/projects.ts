@@ -234,6 +234,34 @@ export const projects: Project[] = [
     color: "from-red-500 to-rose-500",
     size: "md:col-span-2 md:row-span-2 col-span-1 row-span-1",
     slug: "pulse-fitness"
+  },
+  {
+    id: 9,
+    title: "Dog Grooming by Charlotte",
+    category: "Brand Identity",
+    description: "Comprehensive branding and digital presence for a professional pet grooming service.",
+    client: "Dog Grooming by Charlotte",
+    date: "May 2025",
+    services: ["Logo Design", "Website Development", "Print Materials", "Digital Listings"],
+    challenge: "Charlotte needed a complete brand identity that would appeal to pet owners and stand out in the competitive pet grooming market. She required a professional online and offline presence to build client trust and showcase her services.",
+    approach: "We developed a comprehensive branding strategy that included creating a distinctive logo, designing a user-friendly website, producing cohesive print materials, and establishing her business on essential digital platforms.",
+    outcome: "The new brand identity and digital presence resulted in increased visibility for Charlotte's business, a professional image that appealed to her target audience, and improved client acquisition through enhanced online discoverability.",
+    imageUrl: "/api/placeholder/800/500?text=Dog+Grooming",
+    imageWidth: 800,
+    imageHeight: 500,
+    coverImage: "/api/placeholder/1920/1080?text=Dog+Grooming+Cover",
+    coverImageWidth: 1920,
+    coverImageHeight: 1080,
+    images: [
+      {
+        url: "/api/placeholder/800/500?text=Dog+Grooming+1",
+        width: 800,
+        height: 500
+      }
+    ],
+    color: "from-pink-500 to-rose-500",
+    size: "md:col-span-2 md:row-span-1 col-span-1 row-span-1",
+    slug: "dog-grooming-by-charlotte"
   }
 ];
 

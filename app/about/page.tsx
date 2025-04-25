@@ -6,6 +6,7 @@ import TeamMemberCard from '@/components/TeamMemberCard';
 // import ProcessVisualization from '@/components/ProcessVisualization'; // Remove static import
 import StarfieldBackground from '@/components/layout/StarfieldBackground';
 import DynamicProcessVisualization from '@/components/DynamicProcessVisualization'; // Import the new client component
+import { teamMembers } from '@/data/team';
 
 
 const SITE_URL = 'https://glasgowgfx.com';
@@ -97,24 +98,15 @@ const AboutPage = () => {
       <section className="py-16 max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold mb-12 text-center">Meet Our Team</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <TeamMemberCard
-            name="Alex Morgan"
-            role="Creative Director"
-            bio="With 10+ years in design, Alex leads our creative vision with a focus on user-centered solutions."
-            imageUrl="/team/alex.jpg"
-          />
-          <TeamMemberCard
-            name="Jamie Chen"
-            role="Lead Developer"
-            bio="Full-stack specialist passionate about building performant, accessible web applications."
-            imageUrl="/team/jamie.jpg"
-          />
-          <TeamMemberCard
-            name="Taylor Smith"
-            role="UX Strategist"
-            bio="Combines psychology and design to create intuitive user experiences that drive results."
-            imageUrl="/team/taylor.jpg"
-          />
+          {teamMembers.map((member) => (
+            <TeamMemberCard
+              key={member.name}
+              name={member.name}
+              role={member.role}
+              bio={member.bio}
+              imageUrl={member.imageUrl}
+            />
+          ))}
         </div>
       </section>
     </div>

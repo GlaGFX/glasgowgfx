@@ -6,8 +6,8 @@ import { ProjectCard } from '@/components/ProjectCard'; // Assuming ProjectCard 
 import { projects } from '@/data/projects'; // Assuming projects data is correctly imported
 
 export function ProjectsSection() {
-  // Displaying only the first 3 projects as in the original page
-  const displayedProjects = projects.slice(0, 3);
+  // Display all projects
+  const displayedProjects = projects;
 
   return (
     <section className="container mx-auto px-6 py-20 md:py-32" id="work">

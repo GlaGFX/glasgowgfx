@@ -1,11 +1,7 @@
 import type { Metadata } from 'next';
 import { motion } from 'framer-motion';
 // Import the new section components
-import { HeroSection } from '@/components/sections/HeroSection';
-import { FeaturesSection } from '@/components/sections/FeaturesSection';
-import { ProjectsSection } from '@/components/sections/ProjectsSection';
-import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
-import { ContactSection } from '@/components/sections/ContactSection';
+import HomePageClient from '@/components/HomePageClient';
 
 const SITE_URL = 'https://glasgowgfx.com';
 const OG_IMAGE_URL = new URL('/og-image.png', SITE_URL);
@@ -45,11 +41,7 @@ export default function Home() {
 
   return (
     <main className="relative">
-      <HeroSection />
-      <FeaturesSection />
-      <ProjectsSection />
-      <TestimonialsSection />
-      <ContactSection />
+      <HomePageClient />
     </main>
   );
 }
