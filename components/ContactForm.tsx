@@ -1,14 +1,15 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; // Import useState
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
 const ContactForm: React.FC = () => {
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submitMessage, setSubmitMessage] = React.useState<{
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState<{
     message: string | null;
     success: boolean;
   }>({ message: null, success: false });
+  const [budget, setBudget] = useState(100); // Add state for budget
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -138,21 +139,46 @@ const ContactForm: React.FC = () => {
         <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Name</label>
-            <input type="text" id="name" name="name" className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="Your Name" />
+            {/* <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Name</label> */}
+            <input type="text" id="name" name="name" className="form-input w-full p-4 rounded-lg bg-white/5 border border-white/10 text-light placeholder-gray focus:outline-none focus:border-primary focus:bg-white/[.08] transition-all duration-300" placeholder="Your Name" required />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Email</label>
-            <input type="email" id="email" name="email" className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="your.email@example.com" />
+            {/* <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Email</label> */}
+            <input type="email" id="email" name="email" className="form-input w-full p-4 rounded-lg bg-white/5 border border-white/10 text-light placeholder-gray focus:outline-none focus:border-primary focus:bg-white/[.08] transition-all duration-300" placeholder="your.email@example.com" required />
           </div>
+
+          {/* Budget Slider - NEW */}
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Message</label>
-            <textarea id="message" name="message" rows={4} className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-primary focus:border-primary" placeholder="How can we help?"></textarea>
+            {/* <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-1">
+              Estimated Budget: <span className="font-semibold text-primary">£{budget.toLocaleString()}</span>
+            </label> */}
+             <span className="block text-sm font-medium text-gray-300 mb-1">Estimated Budget: <span className="font-semibold text-primary">£{budget.toLocaleString()}</span></span>
+            <input
+              type="range"
+              id="budget"
+              name="budget"
+              min="100"
+              max="20000"
+              step="100" // Added for better increments
+              value={budget}
+              onChange={(e) => setBudget(parseInt(e.target.value, 10))}
+              className="w-full h-2 bg-white/5 border border-white/10 rounded-lg appearance-none cursor-pointer range-lg focus:outline-none focus:border-primary focus:bg-white/[.08] transition-all duration-300"
+            />
+             <div className="flex justify-between text-xs text-gray-400 mt-1">
+               <span>£100</span>
+               <span>£20,000</span>
+             </div>
+          </div>
+
+          {/* Message Textarea */}
+          <div>
+            {/* <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Message</label> */}
+            <textarea id="message" name="message" rows={4} className="form-textarea w-full p-4 rounded-lg bg-white/5 border border-white/10 text-light placeholder-gray focus:outline-none focus:border-primary focus:bg-white/[.08] transition-all duration-300 min-h-[150px] resize-vertical" placeholder="How can we help?" required></textarea>
           </div>
           <div>
             <button 
               type="submit" 
-              className="px-6 py-3 bg-primary text-white font-semibold rounded-md hover:bg-primary-dark transition duration-300 disabled:opacity-50"
+              className="submit-btn w-full p-4 rounded-lg bg-primary text-white font-semibold text-base cursor-pointer transition-all duration-300 ease-in-out border-none hover:bg-primary-dark hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/30 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}

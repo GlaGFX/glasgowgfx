@@ -8,6 +8,7 @@ const ContactFormSchema = z.object({
   name: z.string().min(1, { message: "Name is required." }),
   email: z.string().email({ message: "Invalid email address." }),
   projectType: z.string().optional(), // Optional field
+  budget: z.string().optional(), // Add optional budget field
   message: z.string().min(1, { message: "Message is required." }),
 });
 
@@ -31,6 +32,7 @@ export async function sendContactMessage(
     name: formData.get('name'),
     email: formData.get('email'),
     projectType: formData.get('projectType'),
+    budget: formData.get('budget'), // Get budget from form data
     message: formData.get('message'),
   });
 
@@ -45,11 +47,12 @@ export async function sendContactMessage(
   }
 
   // If validation succeeds, proceed (placeholder for sending email)
-  const { name, email, projectType, message } = validatedFields.data;
+  const { name, email, projectType, message, budget } = validatedFields.data; // Extract budget
   console.log("Received Contact Form Data:");
   console.log("Name:", name);
   console.log("Email:", email);
   console.log("Project Type:", projectType || "N/A");
+  console.log("Budget:", budget || "N/A"); // Log budget
   console.log("Message:", message);
 
   // Return success since we're just validating for now

@@ -2,10 +2,11 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
-  const { name, email, message } = await request.json();
+  // Extract budget along with other fields
+  const { name, email, message, budget } = await request.json();
 
-  // Basic validation
-  if (!name || !email || !message) {
+  // Basic validation (budget is optional, so no need to check here)
+  if (!name || !email || !message ) {
     return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
   }
 
@@ -49,6 +50,7 @@ export async function POST(request: Request) {
         <h3>New Contact Form Submission</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        ${budget ? `<p><strong>Budget:</strong> ${budget}</p>` : ''} // Include budget in HTML email if provided
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
