@@ -33,15 +33,15 @@ export function TestimonialsSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <p className="testimonial-text text-xl md:text-2xl font-medium leading-relaxed md:leading-loose mb-8 italic">
+        <p className="testimonial-text text-xl md:text-2xl font-medium leading-relaxed md:leading-loose mb-8 italic text-gray-900 dark:text-gray-100">
           {testimonial.text}
         </p>
         <div className="testimonial-author flex flex-col items-center gap-2">
           <div className="author-avatar w-16 h-16 rounded-full bg-gray-light flex items-center justify-center font-bold text-dark text-xl">
             {testimonial.author.avatarInitial}
           </div>
-          <div className="author-name font-bold text-lg">{testimonial.author.name}</div>
-          <div className="author-title text-gray text-sm">{testimonial.author.title}</div>
+          <div className="author-name font-bold text-lg text-gray-900 dark:text-gray-100">{testimonial.author.name}</div>
+          <div className="author-title text-purple-700 dark:text-gray-400 text-sm">{testimonial.author.title}</div>
         </div>
       </motion.div>
     </section>
