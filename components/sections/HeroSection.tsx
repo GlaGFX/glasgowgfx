@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import SplitText from '@/components/SplitText';
 
 export function HeroSection() {
   const { scrollYProgress } = useScroll();
@@ -57,12 +58,21 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           >
-            <h1
+            <SplitText
+              text="GLASGOW GFX"
               className="glitch text-6xl md:text-8xl lg:text-9xl font-extrabold leading-none"
               data-text="GLASGOW GFX"
-            >
-              GLASGOW GFX
-            </h1>
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+              onLetterAnimationComplete={() => {}}
+            />
           </motion.div>
 
           <motion.p

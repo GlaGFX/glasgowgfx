@@ -51,7 +51,7 @@ const Footer = () => {
                   Our Team
                 </Link>
               </li>
-              <li><a href="#" className="text-gray no-underline transition-colors duration-300 hover:text-light">Careers</a></li>
+              <li><Link href="/careers" className="text-gray no-underline transition-colors duration-300 hover:text-light">Careers</Link></li>
               <li><Link href="/contact" className="text-gray no-underline transition-colors duration-300 hover:text-light">Contact</Link></li>
             </ul>
           </div>
@@ -62,7 +62,7 @@ const Footer = () => {
             <ul className="list-none flex flex-col gap-3">
               <li><a href="https://x.com/GlaGFX" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Twitter</a></li>
               <li><a href="https://www.instagram.com/glasgow_gfx/" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Instagram</a></li>
-              <li><a href="https://dribbble.com/GlasgowGFX/shots" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Dribbble</a></li>
+              <li><a href="https://dribbble.com/GlasgowGFX" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Dribbble</a></li>
               <li><a href="https://github.com/GlaGFX" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">GitHub</a></li>
               <li><a href="#" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">LinkedIn</a></li>
               <li><a href="https://pinterest.com/Glasgow_gfx/" target="_blank" rel="noopener noreferrer" className="text-gray no-underline transition-colors duration-300 hover:text-light">Pinterest</a></li>
