@@ -1,42 +1,50 @@
-/* Import Inter font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Black Mango Light font - placeholder implementation */
+/* In production, replace with actual font files */
+@font-face {
+  font-family: 'Black Mango Light';
+  src: local('Inter'), local('system-ui'), local('-apple-system'), local('BlinkMacSystemFont');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #0a0f1a;
-  --foreground: #e5e7eb;
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --secondary: #ec4899;
-  --gray: #6b7280;
-  --gray-light: #9ca3af;
+  --background: #000000;
+  --foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-dark: #e5e5e5;
+  --secondary: #666666;
+  --gray: #888888;
+  --gray-light: #cccccc;
 }
 
 .dark {
-  --background: #0a0f1a;
-  --foreground: #e5e7eb;
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --secondary: #ec4899;
-  --gray: #6b7280;
-  --gray-light: #d1d5db;
+  --background: #000000;
+  --foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-dark: #e5e5e5;
+  --secondary: #666666;
+  --gray: #888888;
+  --gray-light: #cccccc;
 }
 
 .light {
-  --background: #f9fafb;
-  --foreground: #111827;
-  --primary: #4f46e5;
-  --primary-dark: #4338ca;
-  --secondary: #db2777;
-  --gray: #4b5563;
-  --gray-light: #9ca3af;
+  --background: #ffffff;
+  --foreground: #000000;
+  --primary: #000000;
+  --primary-dark: #333333;
+  --secondary: #666666;
+  --gray: #888888;
+  --gray-light: #555555;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Black Mango Light', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 300;
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
@@ -96,7 +104,7 @@ html {
 
 .glitch::before {
   left: 2px;
-  text-shadow: -1px 0 #00ffea;
+  text-shadow: -1px 0 #666666;
   clip: rect(24px, 550px, 90px, 0);
   animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
   z-index: -1;
@@ -104,7 +112,7 @@ html {
 
 .glitch::after {
   left: -2px;
-  text-shadow: -1px 0 #ff00c1;
+  text-shadow: -1px 0 #999999;
   clip: rect(85px, 550px, 140px, 0);
   animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
   z-index: -2;

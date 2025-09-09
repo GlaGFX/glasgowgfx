@@ -1,23 +1,23 @@
 export interface Feature {
-  icon: string;
   title: string;
   description: string;
+  icon: string;
 }
 
 export const featuresData: Feature[] = [
   {
-    icon: "✦",
-    title: "Strategic Vision",
-    description: "We dive deep into understanding your goals, audience, and market to develop strategies that drive meaningful results."
+    title: "Reformer Pilates",
+    description: "Experience the transformative power of reformer pilates with our state-of-the-art equipment. Build strength, flexibility, and body awareness through controlled, precise movements.",
+    icon: "💪"
   },
   {
-    icon: "◎",
-    title: "Thoughtful Design",
-    description: "Our design approach balances aesthetics with functionality, creating intuitive interfaces that delight users."
+    title: "Mat Classes",
+    description: "Master the fundamentals of pilates with our expertly guided mat classes. Focus on core strength, posture, and mindful movement in our serene studio environment.",
+    icon: "🧘"
   },
   {
-    icon: "⦿",
-    title: "Technical Excellence",
-    description: "We build with cutting-edge technologies and best practices, ensuring your digital products are future-proof."
+    title: "Personal Training",
+    description: "Achieve your wellness goals with personalized one-on-one sessions. Our certified instructors create customized programs tailored to your unique needs and fitness level.",
+    icon: "🎯"
   }
 ];

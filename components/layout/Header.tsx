@@ -48,52 +48,34 @@ const Header = () => {
           <div className="flex justify-start">
             {/* Ensure logo styling matches the rest of the site */}
             <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-black dark:text-white no-underline">
-              Nexus<span className="text-primary text-3xl leading-none">•</span> {/* Changed secondary to primary */}
+              Aligne<span className="text-primary text-3xl leading-none">•</span>
             </Link>
           </div>
 
           {/* Desktop Navigation Links - Centered with increased spacing */}
           <div className="hidden md:flex gap-10 justify-center nav-links mx-auto">
-            <Link
-              href="/services"
+            <a
+              href="#approach"
+              onClick={handleSmoothScroll}
               className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
-              Services
-            </Link>
+              Classes
+            </a>
 
-            <Link
-              href="/portfolio"
-              className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Work
-            </Link>
-            <Link
-              href="/gallery"
-              className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Gallery
-            </Link>
-
-
-            <Link
-              href="/about"
+            <a
+              href="#about"
+              onClick={handleSmoothScroll}
               className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               About
-            </Link>
-            <Link
-              href="/contact" // Link to contact page
-              className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Contact
-            </Link>
+            </a>
           </div>
 
           {/* Action Buttons - right aligned */}
-          <div className="hidden md:flex gap-4 justify-end items-center buttons"> {/* Added items-center */}
-            <Link href="/contact" className="btn bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ease-in-out hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30">
-              Start a Project
-            </Link>
+          <div className="hidden md:flex gap-4 justify-end items-center buttons">
+            <button className="btn bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ease-in-out hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30">
+              Book a Class
+            </button>
             <ThemeToggle />
           </div>
 
@@ -118,53 +100,30 @@ const Header = () => {
               transition={{ duration: 0.3 }}
               className="md:hidden bg-background/95 backdrop-blur-lg mt-4 py-4 rounded-xl border border-white/10 overflow-hidden" // Added overflow-hidden
             >
-              <div className="flex flex-col space-y-1 px-4"> {/* Reduced space-y */}
-                <Link
-                  href="/services"
-                  className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground" // Use block and adjust padding
-                  onClick={closeMobileMenu}
-                >
-                  Services
-                </Link>
-                <Link
-                  href="/portfolio"
+              <div className="flex flex-col space-y-1 px-4">
+                <a
+                  href="#approach"
+                  onClick={handleSmoothScroll}
                   className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground"
-                  onClick={closeMobileMenu}
                 >
-                  Work
-                </Link>
-                <Link
-                  href="/gallery"
+                  Classes
+                </a>
+                <a
+                  href="#about"
+                  onClick={handleSmoothScroll}
                   className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground"
-                  onClick={closeMobileMenu}
-                >
-                  Gallery
-                </Link>
-
-                <Link
-                  href="/about"
-                  className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground"
-                  onClick={closeMobileMenu}
                 >
                   About
-                </Link>
-                <Link
-                  href="/contact"
-                  onClick={closeMobileMenu} // Close menu on click
-                  className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground"
-                >
-                  Contact
-                </Link>
-                <div className="pt-4 pb-2"> {/* Add padding for button */}
-                  <Link
-                    href="/contact"
-                    className="bg-primary text-white block w-full py-3 px-4 rounded-lg font-semibold text-sm text-center transition-all hover:bg-primary-dark" // Use block and w-full
+                </a>
+                <div className="pt-4 pb-2">
+                  <button
+                    className="bg-primary text-white block w-full py-3 px-4 rounded-lg font-semibold text-sm text-center transition-all hover:bg-primary-dark"
                     onClick={closeMobileMenu}
                   >
-                    Start a Project
-                  </Link>
+                    Book a Class
+                  </button>
                 </div>
-                 <div className="flex justify-center pt-2 pb-2"> {/* Center ThemeToggle */}
+                 <div className="flex justify-center pt-2 pb-2">
                    <ThemeToggle />
                  </div>
               </div>

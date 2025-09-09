@@ -49,7 +49,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
           >
-            Design Collective
+            Premium Pilates Studio
           </motion.span>
 
           <motion.div
@@ -59,9 +59,9 @@ export function HeroSection() {
             transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           >
             <SplitText
-              text="GLASGOW GFX"
+              text="ALIGNE STUDIO"
               className="glitch text-6xl md:text-8xl lg:text-9xl font-extrabold leading-none"
-              data-text="GLASGOW GFX"
+              data-text="ALIGNE STUDIO"
               delay={100}
               duration={0.6}
               ease="power3.out"
@@ -81,7 +81,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
           >
-            We're a collective of designers, developers, and strategists passionate about creating meaningful digital products that push boundaries.
+            Transform your body and mind through the perfect alignment of strength, flexibility, and mindfulness. Experience pilates in our modern, minimalist studio.
           </motion.p>
 
           <motion.div
@@ -90,12 +90,11 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
           >
-            {/* TODO: Link buttons appropriately */}
             <button className="btn-primary px-8 py-3 rounded-lg font-semibold text-base transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/30">
-              View Our Work
+              Book a Class
             </button>
             <button className="btn-outline px-8 py-3 rounded-lg font-semibold text-base transition-all duration-300 ease-in-out hover:-translate-y-1">
-              Learn Our Process
+              Our Programs
             </button>
           </motion.div>
         </motion.div>

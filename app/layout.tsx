@@ -3,7 +3,6 @@ import "./globals.css";
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import StarfieldBackground from '@/components/layout/StarfieldBackground';
 import PageTransitionWrapper from '@/components/layout/PageTransitionWrapper';
 import Script from 'next/script';
 
@@ -17,7 +16,7 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-const SITE_URL = 'https://glasgowgfx.com'
+const SITE_URL = 'https://alignestudio.com'
 const OG_IMAGE_URL = new URL('/og-image.png', SITE_URL)
 
 export async function generateMetadata(
@@ -28,21 +27,23 @@ export async function generateMetadata(
 
   // Core metadata values
   const title = {
-    default: "Glasgow GFX | Professional Graphic Design Services",
-    template: "%s | Glasgow GFX"
+    default: "Aligne Studio | Premium Pilates Studio",
+    template: "%s | Aligne Studio"
   }
-  const description = "Expert graphic design services including logo design, brand identity, print design, digital graphics, UI/UX design, and marketing materials. Based in Glasgow, serving clients worldwide."
+  const description = "Transform your body and mind at Aligne Studio. Premium pilates classes, personalized training, and wellness programs in a modern, minimalist environment. Experience the perfect alignment of strength, flexibility, and mindfulness."
   const keywords = [
-    "graphic design",
-    "logo design",
-    "brand identity",
-    "print design",
-    "digital graphics",
-    "UI/UX design",
-    "marketing materials",
-    "Glasgow designer",
-    "visual identity",
-    "packaging design"
+    "pilates",
+    "pilates studio",
+    "pilates classes",
+    "fitness",
+    "wellness",
+    "strength training",
+    "flexibility",
+    "mindfulness",
+    "personal training",
+    "body alignment",
+    "core strength",
+    "reformer pilates"
   ]
 
   // Open Graph configuration
@@ -50,12 +51,12 @@ export async function generateMetadata(
     title: title.default,
     description,
     url: new URL(SITE_URL),
-    siteName: "Glasgow GFX",
+    siteName: "Aligne Studio",
     images: [{
       url: OG_IMAGE_URL,
       width: 1200,
       height: 630,
-      alt: "Glasgow GFX - Professional Graphic Design Services",
+      alt: "Aligne Studio - Premium Pilates Studio",
     }],
     locale: "en_US",
     type: "website",
@@ -68,9 +69,9 @@ export async function generateMetadata(
     description,
     images: [{
       url: OG_IMAGE_URL.toString(),
-      alt: "Glasgow GFX - Professional Graphic Design Services"
+      alt: "Aligne Studio - Premium Pilates Studio"
     }],
-    creator: "@glasgowgfx"
+    creator: "@alignestudio"
   }
 
   // Return merged metadata
@@ -129,15 +130,12 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ThemeProvider>
-          {/* Starfield background component */}
-          <StarfieldBackground />
-          
           {/* Header */}
           <Header />
           
           {/* Main content with page transitions */}
           <PageTransitionWrapper>
-            <main className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <main className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               {children}
             </main>
           </PageTransitionWrapper>

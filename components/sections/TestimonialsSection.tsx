@@ -23,7 +23,7 @@ export function TestimonialsSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        What Our Clients Say
+        What Our Members Say
       </motion.h2>
 
       <motion.div

@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'black-mango': ['Black Mango Light', 'sans-serif'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -26,6 +29,18 @@ const config: Config = {
           DEFAULT: 'var(--gray)',
           light: 'var(--gray-light)',
         },
+        black: '#000000',
+        white: '#ffffff',
+        'gray-50': '#f9fafb',
+        'gray-100': '#f3f4f6',
+        'gray-200': '#e5e7eb',
+        'gray-300': '#d1d5db',
+        'gray-400': '#9ca3af',
+        'gray-500': '#6b7280',
+        'gray-600': '#4b5563',
+        'gray-700': '#374151',
+        'gray-800': '#1f2937',
+        'gray-900': '#111827',
       },
       animation: {
         twinkle: 'twinkle var(--duration, 5s) infinite var(--delay, 0s)',
