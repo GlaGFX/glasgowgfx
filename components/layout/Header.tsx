@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from '../ThemeToggle'; // Corrected import path
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,6 +8,34 @@ import { FiX, FiMenu } from 'react-icons/fi';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show header when at top of page
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      }
+      // Hide header when scrolling down, show when scrolling up
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+        setIsMenuOpen(false); // Close mobile menu when hiding header
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', controlNavbar);
+    
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY]);
 
   // Function to handle smooth scroll for anchor links within the header
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -39,55 +67,31 @@ const Header = () => {
 
 
   return (
-    // Use background/80 and backdrop-blur for the glass effect
-    <header className="py-6 md:py-8 fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-white/10">
+    <motion.header
+      initial={{ y: 0 }}
+      animate={{ y: isVisible ? 0 : -100 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      className="py-6 md:py-8 fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-white/10"
+    >
       <div className="container mx-auto px-6">
         {/* Changed from grid to flex for better alignment control */}
-        <nav className="flex justify-center items-center space-x-16">
+        <nav className="flex justify-between items-center">
           {/* Logo - left aligned */}
-          <div className="flex justify-start">
-            {/* Ensure logo styling matches the rest of the site */}
-            <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-black dark:text-white no-underline">
-              Aligne<span className="text-primary text-3xl leading-none">•</span>
-            </Link>
-          </div>
+          <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-black dark:text-white no-underline font-black-mango">
+            Aligne<span className="text-primary text-3xl leading-none">•</span>
+          </Link>
 
-          {/* Desktop Navigation Links - Centered with increased spacing */}
-          <div className="hidden md:flex gap-10 justify-center nav-links mx-auto">
-            <a
-              href="#approach"
-              onClick={handleSmoothScroll}
-              className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Classes
-            </a>
-
-            <a
-              href="#about"
-              onClick={handleSmoothScroll}
-              className="text-gray-light text-base font-medium transition-colors duration-300 hover:text-foreground relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
-            >
-              About
-            </a>
-          </div>
-
-          {/* Action Buttons - right aligned */}
-          <div className="hidden md:flex gap-4 justify-end items-center buttons">
-            <button className="btn bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ease-in-out hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30">
-              Book a Class
-            </button>
+          {/* Right side - Theme Toggle and Hamburger Menu */}
+          <div className="flex items-center gap-4">
             <ThemeToggle />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-foreground hover:text-primary transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-md bg-white/5 border border-white/10 text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen} // Accessibility
-          >
-            {isMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
-          </button>
         </nav>
 
         {/* Mobile Menu */}
@@ -131,7 +135,7 @@ const Header = () => {
           )}
         </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   );
 };
 

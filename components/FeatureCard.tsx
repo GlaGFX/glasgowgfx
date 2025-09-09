@@ -12,7 +12,7 @@ export function FeatureCard({ icon, title, description }: FeatureCardProps) {
       <div className="card-icon text-4xl mb-6 inline-block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
         {icon}
       </div>
-      <h3 className="text-2xl mb-4 font-bold text-black dark:text-white">{title}</h3>
+      <h3 className="text-2xl mb-4 font-bold text-black dark:text-white font-black-mango">{title}</h3>
       <p className="text-gray leading-relaxed mt-auto">{description}</p>
     </div>
   );

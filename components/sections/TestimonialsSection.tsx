@@ -17,7 +17,7 @@ export function TestimonialsSection() {
   return (
     <section className="container mx-auto px-6 py-20 md:py-32" id="about">
       <motion.h2
-        className="section-title text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-12 md:mb-16 tracking-tight"
+        className="section-title text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-12 md:mb-16 tracking-tight font-black-mango"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

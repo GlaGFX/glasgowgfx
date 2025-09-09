@@ -1,8 +1,8 @@
-/* Black Mango Light font - placeholder implementation */
-/* In production, replace with actual font files */
+/* Black Mango Light font */
 @font-face {
   font-family: 'Black Mango Light';
-  src: local('Inter'), local('system-ui'), local('-apple-system'), local('BlinkMacSystemFont');
+  src: url('/fonts/BlackMangoLight.woff2') format('woff2'),
+       url('/fonts/BlackMangoLight.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -48,6 +48,47 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+}
+
+/* Vertical text writing mode */
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Custom styles for the homepage layout */
+.homepage-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Ensure proper spacing and alignment */
+.content-area {
+  padding-top: 120px; /* Account for fixed header */
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .writing-mode-vertical {
+    writing-mode: horizontal-tb;
+    text-orientation: initial;
+  }
 }
 
 /* Smooth scroll behavior */

@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="footer-content flex flex-wrap justify-between items-start gap-10 md:gap-8">
           {/* Footer Info */}
           <div className="footer-info w-full md:w-auto md:max-w-xs">
-            <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-light no-underline mb-4">
+            <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-light no-underline mb-4 font-black-mango">
               Aligne<span className="text-primary text-3xl leading-none">•</span>
             </Link>
             <p className="text-gray leading-relaxed">

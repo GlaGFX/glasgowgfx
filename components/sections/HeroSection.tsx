@@ -60,7 +60,7 @@ export function HeroSection() {
           >
             <SplitText
               text="ALIGNE STUDIO"
-              className="glitch text-6xl md:text-8xl lg:text-9xl font-extrabold leading-none"
+              className="glitch text-6xl md:text-8xl lg:text-9xl font-extrabold leading-none font-black-mango"
               data-text="ALIGNE STUDIO"
               delay={100}
               duration={0.6}
