@@ -1,12 +1,17 @@
 /* Black Mango Light font */
 @font-face {
   font-family: 'Black Mango Light';
-  src: url('/fonts/BlackMangoLight.woff2') format('woff2'),
-       url('/fonts/BlackMangoLight.woff') format('woff');
+  src: url('/fonts/BlackMangoLight.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
+
+/* Myriad Pro Light Semiextended font */
+@import url('https://fonts.googleapis.com/css2?family=Myriad+Pro:wght@300&display=swap');
+
+/* League Gothic font */
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic:wght@400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -43,8 +48,9 @@
 }
 
 body {
-  font-family: 'Black Mango Light', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Myriad Pro', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 300;
+  font-stretch: semi-expanded;
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;

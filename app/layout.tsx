@@ -130,18 +130,10 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ThemeProvider>
-          {/* Header */}
-          <Header />
-          
           {/* Main content with page transitions */}
           <PageTransitionWrapper>
-            <main className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              {children}
-            </main>
+            {children}
           </PageTransitionWrapper>
-          
-          {/* Footer */}
-          <Footer />
         </ThemeProvider>
       </body>
     </html>
