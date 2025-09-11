@@ -119,6 +119,13 @@ const Header = () => {
                 >
                   About
                 </a>
+                <Link
+                  href="/coming-soon"
+                  onClick={closeMobileMenu}
+                  className="text-gray-light block py-3 text-base font-medium transition-colors hover:text-foreground"
+                >
+                  Coming Soon
+                </Link>
                 <div className="pt-4 pb-2">
                   <button
                     className="bg-primary text-white block w-full py-3 px-4 rounded-lg font-semibold text-sm text-center transition-all hover:bg-primary-dark"

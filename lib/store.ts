@@ -14,19 +14,32 @@ interface AppState {
 
 export const useAppStore = create<AppState>()(
   persist(
-    (set) => ({
-      theme: 'dark',
-      toggleTheme: () => set((state) => ({ theme: state.theme === 'dark' ? 'light' : 'dark' })),
+    (set, get) => ({
+      theme: 'dark', // Default to dark theme
+      toggleTheme: () => {
+        const currentTheme = get().theme;
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        console.log('Toggling theme from', currentTheme, 'to', newTheme);
+        
+        set({ theme: newTheme });
+        
+        // Immediately apply to document
+        if (typeof window !== 'undefined') {
+          document.documentElement.classList.remove('light', 'dark');
+          document.documentElement.classList.add(newTheme);
+          console.log('Applied theme class:', newTheme);
+        }
+      },
       formSubmissions: {},
-      markFormSubmitted: (formId) => 
-        set((state) => ({ 
+      markFormSubmitted: (formId) =>
+        set((state) => ({
           formSubmissions: { ...state.formSubmissions, [formId]: true }
         })),
     }),
     {
       name: 'app-storage',
       storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({ theme: state.theme }), // Only persist theme
+      partialize: (state) => ({ theme: state.theme }),
     }
   )
 );

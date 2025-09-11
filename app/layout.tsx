@@ -1,8 +1,6 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import "./globals.css";
 import { ThemeProvider } from '@/components/ThemeProvider';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import PageTransitionWrapper from '@/components/layout/PageTransitionWrapper';
 import Script from 'next/script';
 
@@ -16,7 +14,7 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-const SITE_URL = 'https://alignestudio.com'
+const SITE_URL = 'https://studio-ba.com'
 const OG_IMAGE_URL = new URL('/og-image.png', SITE_URL)
 
 export async function generateMetadata(
@@ -27,23 +25,23 @@ export async function generateMetadata(
 
   // Core metadata values
   const title = {
-    default: "Aligne Studio | Premium Pilates Studio",
-    template: "%s | Aligne Studio"
+    default: "Studio—BA® | Multidisciplinary Design Practice",
+    template: "%s | Studio—BA®"
   }
-  const description = "Transform your body and mind at Aligne Studio. Premium pilates classes, personalized training, and wellness programs in a modern, minimalist environment. Experience the perfect alignment of strength, flexibility, and mindfulness."
+  const description = "Studio—BA® is a multidisciplinary design practice working worldwide. Architectural design, branding, and creative solutions with a focus on innovative and sustainable design approaches."
   const keywords = [
-    "pilates",
-    "pilates studio",
-    "pilates classes",
-    "fitness",
-    "wellness",
-    "strength training",
-    "flexibility",
-    "mindfulness",
-    "personal training",
-    "body alignment",
-    "core strength",
-    "reformer pilates"
+    "design studio",
+    "architecture",
+    "branding",
+    "multidisciplinary design",
+    "creative solutions",
+    "design practice",
+    "architectural design",
+    "visual identity",
+    "spatial design",
+    "graphic design",
+    "studio ba",
+    "design consultancy"
   ]
 
   // Open Graph configuration
@@ -51,12 +49,12 @@ export async function generateMetadata(
     title: title.default,
     description,
     url: new URL(SITE_URL),
-    siteName: "Aligne Studio",
+    siteName: "Studio—BA®",
     images: [{
       url: OG_IMAGE_URL,
       width: 1200,
       height: 630,
-      alt: "Aligne Studio - Premium Pilates Studio",
+      alt: "Studio—BA® - Multidisciplinary Design Practice",
     }],
     locale: "en_US",
     type: "website",
@@ -69,9 +67,9 @@ export async function generateMetadata(
     description,
     images: [{
       url: OG_IMAGE_URL.toString(),
-      alt: "Aligne Studio - Premium Pilates Studio"
+      alt: "Studio—BA® - Multidisciplinary Design Practice"
     }],
-    creator: "@alignestudio"
+    creator: "@studioba"
   }
 
   // Return merged metadata
