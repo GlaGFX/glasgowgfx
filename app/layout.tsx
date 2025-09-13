@@ -25,7 +25,7 @@ export async function generateMetadata(
 
   // Core metadata values
   const title = {
-    default: "Align Studio | Multidisciplinary Design Practice",
+    default: "ALIGNÉ STUDIO | Realign, relax, renew, recover",
     template: "%s | Align Studio"
   }
   const description = "Align Studio is a multidisciplinary design practice working worldwide. Architectural design, branding, and creative solutions with a focus on innovative and sustainable design approaches."
