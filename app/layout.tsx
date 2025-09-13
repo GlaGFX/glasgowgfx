@@ -14,7 +14,7 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-const SITE_URL = 'https://studio-ba.com'
+const SITE_URL = 'https://glasgowgfx.vercel.app'
 const OG_IMAGE_URL = new URL('/og-image.png', SITE_URL)
 
 export async function generateMetadata(
@@ -25,10 +25,10 @@ export async function generateMetadata(
 
   // Core metadata values
   const title = {
-    default: "Studio—BA® | Multidisciplinary Design Practice",
-    template: "%s | Studio—BA®"
+    default: "Align Studio | Multidisciplinary Design Practice",
+    template: "%s | Align Studio"
   }
-  const description = "Studio—BA® is a multidisciplinary design practice working worldwide. Architectural design, branding, and creative solutions with a focus on innovative and sustainable design approaches."
+  const description = "Align Studio is a multidisciplinary design practice working worldwide. Architectural design, branding, and creative solutions with a focus on innovative and sustainable design approaches."
   const keywords = [
     "design studio",
     "architecture",
@@ -49,12 +49,12 @@ export async function generateMetadata(
     title: title.default,
     description,
     url: new URL(SITE_URL),
-    siteName: "Studio—BA®",
+    siteName: "Align Studio",
     images: [{
       url: OG_IMAGE_URL,
       width: 1200,
       height: 630,
-      alt: "Studio—BA® - Multidisciplinary Design Practice",
+      alt: "Align Studio - Multidisciplinary Design Practice",
     }],
     locale: "en_US",
     type: "website",
@@ -67,9 +67,9 @@ export async function generateMetadata(
     description,
     images: [{
       url: OG_IMAGE_URL.toString(),
-      alt: "Studio—BA® - Multidisciplinary Design Practice"
+      alt: "Align Studio - Multidisciplinary Design Practice"
     }],
-    creator: "@studioba"
+    creator: "@alignstudio"
   }
 
   // Return merged metadata

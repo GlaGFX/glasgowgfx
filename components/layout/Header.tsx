@@ -83,7 +83,7 @@ const Header = () => {
         <nav className="flex justify-between items-center">
           {/* Logo - left aligned */}
           <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-black dark:text-white no-underline font-black-mango">
-            Aligne<span className="text-primary text-3xl leading-none">•</span>
+            ALIGNÉ<span className="text-primary text-3xl leading-none">•</span>
           </Link>
 
           {/* Right side - Theme Toggle and Hamburger Menu */}

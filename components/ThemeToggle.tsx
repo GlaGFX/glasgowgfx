@@ -1,7 +1,6 @@
 'use client';
 
 import { useTheme } from '@/lib/store';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
 
 export function ThemeToggle() {
@@ -32,17 +31,19 @@ export function ThemeToggle() {
   }
 
   return (
-    <button
-      onClick={handleToggle}
-      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-800"
-      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-      type="button"
+    <label
+      htmlFor="theme-toggle"
+      className="relative inline-flex items-center cursor-pointer"
     >
-      {theme === 'dark' ? (
-        <SunIcon className="w-5 h-5 text-yellow-300" />
-      ) : (
-        <MoonIcon className="w-5 h-5 text-indigo-600" />
-      )}
-    </button>
+      <input
+        type="checkbox"
+        id="theme-toggle"
+        className="sr-only peer"
+        checked={theme === 'dark'}
+        onChange={handleToggle}
+        aria-label="Toggle theme"
+      />
+      <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-gray-800"></div>
+    </label>
   );
 }
