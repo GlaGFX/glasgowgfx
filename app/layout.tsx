@@ -28,7 +28,7 @@ export async function generateMetadata(
     default: "ALIGNÉ STUDIO | Realign, relax, renew, recover",
     template: "%s | Align Studio"
   }
-  const description = "Align Studio is a multidisciplinary design practice working worldwide. Architectural design, branding, and creative solutions with a focus on innovative and sustainable design approaches."
+  const description = "Align Studio is a  modern pilates studio dedicated to helping you achieve optimal body alignment, strength, and flexibility through expert instruction and personalized sessions."
   const keywords = [
     "design studio",
     "architecture",
