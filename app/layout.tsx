@@ -26,10 +26,10 @@ export async function generateMetadata(
 
   // Core metadata values
   const title = {
-    default: "ALIGNÉ STUDIO | Realign, relax, renew, recover",
-    template: "%s | Align Studio"
+    default: "ALIGNÉ STUDIO | Realign, relax, recover",
+    template: "%s | Aligne Studio"
   }
-  const description = "Align Studio is a  modern pilates studio dedicated to helping you achieve optimal body alignment, strength, and flexibility through expert instruction and personalized sessions."
+  const description = "Aligne Studio is a  modern pilates studio dedicated to helping you achieve optimal body alignment, strength, and flexibility through expert instruction and personalized sessions."
   const keywords = [
     "design studio",
     "architecture",
@@ -50,7 +50,7 @@ export async function generateMetadata(
     title: title.default,
     description,
     url: new URL(SITE_URL),
-    siteName: "Align Studio",
+    siteName: "Aligne Studio",
     images: [{
       url: OG_IMAGE_URL,
       width: 1200,
@@ -70,7 +70,7 @@ export async function generateMetadata(
       url: OG_IMAGE_URL.toString(),
       alt: "Align Studio - Multidisciplinary Design Practice"
     }],
-    creator: "@alignstudio"
+    creator: "@aligne_studio"
   }
 
   // Return merged metadata
