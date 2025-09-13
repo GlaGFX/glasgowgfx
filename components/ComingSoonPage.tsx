@@ -49,8 +49,6 @@ export default function ComingSoonPage() {
       </div>
 
       {/* Elegant geometric elements */}
-      <div className="absolute top-20 left-20 w-32 h-32 border border-gray-200/40 rounded-full"></div>
-      <div className="absolute bottom-32 right-16 w-24 h-24 border border-gray-200/40 rotate-45"></div>
 
       {/* Main content container */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center justify-center min-h-screen py-20">
