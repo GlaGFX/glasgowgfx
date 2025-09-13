@@ -39,7 +39,7 @@ export default function ComingSoonPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
@@ -51,7 +51,7 @@ export default function ComingSoonPage() {
       {/* Elegant geometric elements */}
 
       {/* Main content container */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center justify-center min-h-screen py-20">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center justify-center flex-grow py-20">
         
         {/* Premium tagline */}
         <motion.div
@@ -107,7 +107,7 @@ export default function ComingSoonPage() {
           <p className="text-xl sm:text-2xl text-gray-600 max-w-2xl mx-auto leading-[1.4] font-light tracking-[-0.01em]">
             Something extraordinary is being crafted.
             <br className="hidden sm:block" />
-            <span className="text-gray-500">Be the first to experience our vision.</span>
+            <span className="text-gray-500"> Be the first to experience our vision.</span>
           </p>
         </motion.div>
 

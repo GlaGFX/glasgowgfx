@@ -7,6 +7,7 @@ import Script from 'next/script';
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
+  viewportFit: 'cover',
 };
 
 type Props = {
