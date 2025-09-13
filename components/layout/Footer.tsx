@@ -13,9 +13,6 @@ const Footer = () => {
             <Link href="/" className="logo text-2xl font-extrabold tracking-tight flex items-center gap-1 text-light no-underline mb-4 font-black-mango">
               Aligne<span className="text-primary text-3xl leading-none">•</span>
             </Link>
-            <p className="text-gray leading-relaxed">
-              Transform your body and mind through the perfect alignment of strength, flexibility, and mindfulness at our premium pilates studio.
-            </p>
           </div>
 
           {/* Footer Links - Services */}

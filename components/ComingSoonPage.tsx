@@ -51,7 +51,6 @@ export default function ComingSoonPage() {
       {/* Elegant geometric elements */}
       <div className="absolute top-20 left-20 w-32 h-32 border border-gray-200/40 rounded-full"></div>
       <div className="absolute bottom-32 right-16 w-24 h-24 border border-gray-200/40 rotate-45"></div>
-      <div className="absolute top-1/3 right-1/4 w-1 h-16 bg-gradient-to-b from-gray-300/60 to-transparent"></div>
 
       {/* Main content container */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center justify-center min-h-screen py-20">
@@ -63,14 +62,6 @@ export default function ComingSoonPage() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="mb-16 sm:mb-20"
         >
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-200/20 via-gray-100/30 to-gray-200/20 rounded-full blur-sm"></div>
-            <div className="relative border border-gray-300/50 rounded-full px-8 py-3 bg-white/60 backdrop-blur-sm">
-              <span className="text-gray-600 text-sm font-medium tracking-[0.2em] uppercase">
-                Premium Pilates Studio
-              </span>
-            </div>
-          </div>
         </motion.div>
 
         {/* Main brand typography - Tightened spacing */}
@@ -158,7 +149,7 @@ export default function ComingSoonPage() {
                 disabled={isLoading}
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-4 bg-gradient-to-r from-gray-900 to-gray-800 text-white font-light text-lg hover:from-gray-800 hover:to-gray-700 transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 tracking-[0.05em] uppercase"
+                className="w-full py-4 bg-black text-white font-light text-lg hover:bg-gray-800 transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 tracking-[0.05em] uppercase"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">

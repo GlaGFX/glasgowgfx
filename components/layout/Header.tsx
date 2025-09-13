@@ -10,6 +10,11 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  useEffect(() => {
+    if (isMenuOpen) {
+      console.log('Mobile menu is open in Header.tsx');
+    }
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const controlNavbar = () => {

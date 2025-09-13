@@ -43,14 +43,6 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.span
-            className="hero-tagline text-primary font-bold text-sm uppercase tracking-widest px-4 py-2 rounded-full bg-primary/10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-          >
-            Premium Pilates Studio
-          </motion.span>
 
           <motion.div
             className="glitch-wrapper"
